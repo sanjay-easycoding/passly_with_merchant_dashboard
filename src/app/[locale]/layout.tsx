@@ -1,0 +1,29 @@
+import { translations, type Locale } from '@/lib/translations';
+import Navigation from '@/components/Navigation';
+
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ];
+}
+
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: Locale };
+}) {
+  const t = translations[params.locale];
+  
+  return (
+    <div>
+      <Navigation locale={params.locale} />
+      <main>
+        {children}
+      </main>
+    </div>
+  );
+}

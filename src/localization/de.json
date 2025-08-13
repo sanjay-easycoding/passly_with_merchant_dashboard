@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "createNewPass": "Neuen Pass erstellen",
+    "settings": "Einstellungen",
+    "getStarted": "Loslegen",
+    "login": "Anmelden"
+  },
+  "common": {
+    "title": "Passly"
+  },
+  "pages": {
+    "dashboard": {
+      "welcome": "Willkommen in Ihrem Dashboard"
+    },
+    "settings": {
+      "configure": "Konfigurieren Sie Ihre Einstellungen"
+    },
+    "createPass": {
+      "create": "Erstellen Sie einen neuen Pass"
+    }
+  }
+}

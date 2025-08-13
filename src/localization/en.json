@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "createNewPass": "Create New Pass",
+    "settings": "Settings",
+    "getStarted": "Get Started",
+    "login": "Login"
+  },
+  "common": {
+    "title": "Passly"
+  },
+  "pages": {
+    "dashboard": {
+      "welcome": "Welcome to your Dashboard"
+    },
+    "settings": {
+      "configure": "Configure your settings"
+    },
+    "createPass": {
+      "create": "Create a new pass"
+    }
+  }
+}

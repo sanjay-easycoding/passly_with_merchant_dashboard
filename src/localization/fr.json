@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "createNewPass": "Créer un nouveau passe",
+    "settings": "Paramètres",
+    "getStarted": "Commencer",
+    "login": "Connexion"
+  },
+  "common": {
+    "title": "Passly"
+  },
+  "pages": {
+    "dashboard": {
+      "welcome": "Bienvenue dans votre tableau de bord"
+    },
+    "settings": {
+      "configure": "Configurez vos paramètres"
+    },
+    "createPass": {
+      "create": "Créez un nouveau passe"
+    }
+  }
+}
