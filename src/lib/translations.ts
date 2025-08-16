@@ -1,13 +1,11 @@
 import de from '../localization/de.json';
 import en from '../localization/en.json';
-import fr from '../localization/fr.json';
 
-export type Locale = 'de' | 'en' | 'fr';
+export type Locale = 'de' | 'en';
 
 export const translations = {
   de,
-  en,
-  fr
+  en
 };
 
 export const defaultLocale: Locale = 'de';

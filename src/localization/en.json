@@ -19,5 +19,62 @@
     "createPass": {
       "create": "Create a new pass"
     }
+  },
+  "joinThousands": {
+    "headline": "Join Thousands of Smart Merchants",
+    "subheading": "From local cafes to clinics, businesses are going contactless with digital passes — no app, no friction.",
+    "description": "Design professional loyalty cards, coupons, event tickets, and gift cards that customers can add to their Apple Wallet. Complete setup with all required details.",
+    "ctaButton": "Create a Pass"
+  },
+  "coreValues": {
+    "title": "Core Values and Features",
+    "subtitle": "Simple, fast, and reliable — instant QR access, secure sharing, and real-time tracking.",
+    "instantDistribution": {
+      "title": "Instant Distribution",
+      "paragraph1": "Generate QR codes and links for easy customer access. Effortlessly create and distribute unique QR codes and direct links for your offers, passes, or digital content.",
+      "paragraph2": "Customers can instantly scan or tap to access what they need—no app downloads, sign-ups, or extra steps required. This seamless process ensures faster engagement, better customer experience, and higher conversion rates for your business."
+    },
+    "cards": {
+      "instantDistribution": {
+        "title": "Instant Distribution",
+        "description": "Generate QR codes and links for easy customer access"
+      },
+      "completeSetup": {
+        "title": "Complete Setup",
+        "description": "All required fields and business details for professional passes"
+      },
+      "fullBranding": {
+        "title": "Full Branding",
+        "description": "Customize everything to match your brand perfectly"
+      }
+    },
+    "cta": {
+      "getStarted": "Get Started",
+      "knowMore": "Know more"
+    }
+  },
+  "footer": {
+    "tagline": "The Future of Wallet Engagement.",
+    "copyright": "© 2025 Passly. All rights Reserved",
+    "navigation": {
+      "home": "Home",
+      "product": "Product",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "legal": {
+      "privacyPolicy": "Privacy Policy",
+      "termsOfServices": "Terms of Services",
+      "newsletterSignup": "Newsletter Sign-up"
+    },
+    "newsletterDescription": "Get updates on new features, guides, and exclusive offers."
+  },
+  "footerCTA": {
+    "headline": "Tap In. Stand Out. Join Us.",
+    "subheadline": "“Ready to Go Contactless? Let’s Build Your First Pass — No App Needed.”",
+    "description": "Start in minutes — no tech skills needed.",
+    "emailPlaceholder": "Enter your e-mail",
+    "ctaButton": "Get Started"
   }
 }

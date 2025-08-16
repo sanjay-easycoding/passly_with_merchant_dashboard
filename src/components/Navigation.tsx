@@ -16,8 +16,7 @@ const navButtons = [
 
 const languages = [
   { code: 'de', name: 'DE' },
-  { code: 'en', name: 'EN' },
-  { code: 'fr', name: 'FR' }
+  { code: 'en', name: 'EN' }
 ];
 
 interface NavigationProps {
@@ -64,8 +63,6 @@ const Navigation = ({ locale }: NavigationProps) => {
       currentLocale = 'en';
     } else if (currentPath.startsWith('/de/')) {
       currentLocale = 'de';
-    } else if (currentPath.startsWith('/fr/')) {
-      currentLocale = 'fr';
     }
     
     // Navigate to the detected locale's section
@@ -78,19 +75,12 @@ const Navigation = ({ locale }: NavigationProps) => {
   };
 
   return (
-    <nav className="relative bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="relative bg-white">
+      <div className="max-w-7xl mx-auto px-8 py-6">
+        <div className="flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-              <div className="w-4 h-4 relative">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-white rounded-full"></div>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-white rounded-full"></div>
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2 h-1 bg-white rounded-full"></div>
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-1 bg-white rounded-full"></div>
-              </div>
-            </div>
+            <img src="/passly_logo.svg" alt="Passly Logo" className="w-10 h-10 block mb-[18px] mr-[5px]" />
             <div className="text-xl sm:text-2xl font-bold text-black">
               {t.common.title}
             </div>

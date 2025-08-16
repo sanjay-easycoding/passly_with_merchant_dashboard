@@ -19,5 +19,62 @@
     "createPass": {
       "create": "Erstellen Sie einen neuen Pass"
     }
+  },
+  "joinThousands": {
+    "headline": "Schließen Sie sich Tausenden von klugen Händlern an",
+    "subheading": "Von lokalen Cafés bis zu Kliniken gehen Unternehmen kontaktlos mit digitalen Pässen — keine App, keine Reibung.",
+    "description": "Gestalten Sie professionelle Treuekarten, Gutscheine, Event-Tickets und Geschenkkarten, die Kunden zu ihrer Apple Wallet hinzufügen können. Vollständige Einrichtung mit allen erforderlichen Details.",
+    "ctaButton": "Pass erstellen"
+  },
+  "coreValues": {
+    "title": "Kernwerte und Funktionen",
+    "subtitle": "Einfach, schnell und zuverlässig — sofortiger QR-Zugang, sicheres Teilen und Echtzeit-Verfolgung.",
+    "instantDistribution": {
+      "title": "Sofortige Verteilung",
+      "paragraph1": "Generieren Sie QR-Codes und Links für einfachen Kundenzugang. Erstellen und verteilen Sie mühelos einzigartige QR-Codes und direkte Links für Ihre Angebote, Pässe oder digitalen Inhalte.",
+      "paragraph2": "Kunden können sofort scannen oder tippen, um auf das zuzugreifen, was sie brauchen — keine App-Downloads, Anmeldungen oder zusätzlichen Schritte erforderlich. Dieser nahtlose Prozess sorgt für schnelleres Engagement, bessere Kundenerfahrung und höhere Konversionsraten für Ihr Unternehmen."
+    },
+    "cards": {
+      "instantDistribution": {
+        "title": "Sofortige Verteilung",
+        "description": "Generieren Sie QR-Codes und Links für einfachen Kundenzugang"
+      },
+      "completeSetup": {
+        "title": "Vollständige Einrichtung",
+        "description": "Alle erforderlichen Felder und Geschäftsdetails für professionelle Pässe"
+      },
+      "fullBranding": {
+        "title": "Vollständiges Branding",
+        "description": "Passen Sie alles perfekt an Ihre Marke an"
+      }
+    },
+    "cta": {
+      "getStarted": "Loslegen",
+      "knowMore": "Mehr erfahren"
+    }
+  },
+  "footer": {
+    "tagline": "Die Zukunft des Wallet-Engagements.",
+    "copyright": "© 2025 Passly. Alle Rechte vorbehalten",
+    "navigation": {
+      "home": "Startseite",
+      "product": "Produkt",
+      "pricing": "Preise",
+      "blog": "Blog",
+      "contact": "Kontakt"
+    },
+    "legal": {
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfServices": "Nutzungsbedingungen",
+      "newsletterSignup": "Newsletter-Anmeldung"
+    },
+    "newsletterDescription": "Erhalten Sie Updates zu neuen Funktionen, Anleitungen und exklusiven Angeboten."
+  },
+  "footerCTA": {
+    "headline": "Eintreten. Hervorstechen. Mach mit.",
+    "subheadline": "Bereit für kontaktlos? Lassen Sie uns Ihren ersten Pass erstellen — Keine App erforderlich.",
+    "description": "Starten Sie in Minuten — keine technischen Fähigkeiten erforderlich.",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "ctaButton": "Loslegen"
   }
 }
