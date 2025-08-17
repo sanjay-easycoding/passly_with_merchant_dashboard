@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTranslations, type Locale } from '@/lib/translations';
-import { FaCheckCircle, FaCogs, FaPalette, FaQrcode, FaMobileAlt, FaStar } from 'react-icons/fa';
-import { BsQrCode } from 'react-icons/bs';
+import {FaMobileAlt} from 'react-icons/fa';
+
 import { IoStarSharp } from 'react-icons/io5';
 import { CgQr } from 'react-icons/cg';
 
