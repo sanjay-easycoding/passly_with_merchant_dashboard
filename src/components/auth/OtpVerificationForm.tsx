@@ -33,6 +33,10 @@ export default function OtpVerificationForm({ onVerify, onBack }: OtpVerificatio
     setIsSubmitting(true);
     try {
       const otp = digits.join("");
+      if (otp.length !== digits.length) {
+        setIsSubmitting(false);
+        return;
+      }
       await onVerify?.(otp);
     } finally {
       setIsSubmitting(false);
@@ -50,7 +54,7 @@ export default function OtpVerificationForm({ onVerify, onBack }: OtpVerificatio
           {digits.map((d, i) => (
             <input
               key={i}
-              ref={(el) => (inputsRef.current[i] = el)}
+              ref={(el) => { inputsRef.current[i] = el; }}
               inputMode="numeric"
               pattern="[0-9]*"
               maxLength={1}

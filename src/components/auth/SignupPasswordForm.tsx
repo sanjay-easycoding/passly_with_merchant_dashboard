@@ -14,12 +14,21 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
   const [showConfirm, setShowConfirm] = React.useState(false);
   const [accepted, setAccepted] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [touched, setTouched] = React.useState<{ password?: boolean; confirm?: boolean }>({});
+  const [errors, setErrors] = React.useState<{ password?: string; confirm?: string; terms?: string }>({});
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!accepted) return;
     setIsSubmitting(true);
     try {
+      const validationErrors: { password?: string; confirm?: string; terms?: string } = {};
+      if (!password) validationErrors.password = 'Password is required';
+      if (!confirmPassword) validationErrors.confirm = 'Please re-enter password';
+      else if (confirmPassword !== password) validationErrors.confirm = "Passwords don't match";
+      if (!accepted) validationErrors.terms = 'You must accept terms';
+      setErrors(validationErrors);
+      if (Object.keys(validationErrors).length > 0) return;
       await onRegister?.({ password, confirmPassword, accepted });
     } finally {
       setIsSubmitting(false);
@@ -46,8 +55,16 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               type={showPassword ? 'text' : 'password'}
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                if (touched.password) setErrors((p) => ({ ...p, password: e.target.value ? undefined : 'Password is required' }));
+              }}
+              onBlur={() => {
+                setTouched((t) => ({ ...t, password: true }));
+                setErrors((p) => ({ ...p, password: password ? undefined : 'Password is required' }));
+              }}
               placeholder="Password"
+              aria-invalid={!!errors.password}
               className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
             />
             <button
@@ -58,6 +75,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               <img src={showPassword ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" className="w-[16px] h-[16px]" />
             </button>
           </div>
+          <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{errors.password ? errors.password : ''}</p>
         </div>
 
         {/* Confirm Password */}
@@ -69,8 +87,16 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               type={showConfirm ? 'text' : 'password'}
               required
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                if (touched.confirm) setErrors((p) => ({ ...p, confirm: e.target.value ? (e.target.value === password ? undefined : "Passwords don't match") : 'Please re-enter password' }));
+              }}
+              onBlur={() => {
+                setTouched((t) => ({ ...t, confirm: true }));
+                setErrors((p) => ({ ...p, confirm: confirmPassword ? (confirmPassword === password ? undefined : "Passwords don't match") : 'Please re-enter password' }));
+              }}
               placeholder="Re-Enter Password"
+              aria-invalid={!!errors.confirm}
               className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
             />
             <button
@@ -81,6 +107,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               <img src={showConfirm ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" className="w-[16px] h-[16px]" />
             </button>
           </div>
+          <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{errors.confirm ? errors.confirm : ''}</p>
         </div>
 
         {/* Terms */}
@@ -89,6 +116,9 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
           <label htmlFor="terms" className="select-none">
             I agree to the <a href="#" className="text-blue-500 font-semibold">Terms & Conditions</a>
           </label>
+        </div>
+        <div className="w-full max-w-[640px] min-w-[400px] text-[#ff4d4f] text-[14px] min-h-[16px]">
+          {errors.password || errors.confirm || (!accepted && touched.password) ? (errors.password || errors.confirm || errors.terms) : ''}
         </div>
 
         {/* Buttons */}

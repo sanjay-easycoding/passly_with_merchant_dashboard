@@ -14,6 +14,8 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
   const [password, setPassword] = React.useState("");
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [touched, setTouched] = React.useState<{ email?: boolean; password?: boolean }>({});
+  const [errors, setErrors] = React.useState<{ email?: string; password?: string }>({});
   const pathname = usePathname();
   const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
   const t = getTranslations(detectedLocale);
@@ -24,6 +26,17 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      const validationErrors: { email?: string; password?: string } = {};
+      if (!email) {
+        validationErrors.email = 'Email is required';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        validationErrors.email = 'Enter a valid email';
+      }
+      if (!password) {
+        validationErrors.password = 'Password is required';
+      }
+      setErrors(validationErrors);
+      if (Object.keys(validationErrors).length > 0) return;
       await onSubmit?.({ email, password });
     } finally {
       setIsSubmitting(false);
@@ -47,11 +60,36 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
             required
             autoComplete="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (touched.email) {
+                setErrors((prev) => ({
+                  ...prev,
+                  email: !e.target.value
+                    ? 'Email is required'
+                    : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)
+                    ? undefined
+                    : 'Enter a valid email',
+                }));
+              }
+            }}
+            onBlur={() => {
+              setTouched((t) => ({ ...t, email: true }));
+              setErrors((prev) => ({
+                ...prev,
+                email: !email
+                  ? 'Email is required'
+                  : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+                  ? undefined
+                  : 'Enter a valid email',
+              }));
+            }}
             placeholder="e-mail"
-            className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+            aria-invalid={!!errors.email}
+            className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.email ? 'border border-[#ff4d4f]' : 'border border-gray-200 focus:border-blue-500'}`}
           />
         </div>
+        <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.email && errors.email ? errors.email : ''}</p>
       </div>
 
       {/* Password */}
@@ -64,9 +102,19 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
             required
             autoComplete="current-password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (touched.password) {
+                setErrors((prev) => ({ ...prev, password: e.target.value ? undefined : 'Password is required' }));
+              }
+            }}
+            onBlur={() => {
+              setTouched((t) => ({ ...t, password: true }));
+              setErrors((prev) => ({ ...prev, password: password ? undefined : 'Password is required' }));
+            }}
             placeholder="Password"
-            className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+            aria-invalid={!!errors.password}
+            className={`w-full rounded-[12px] bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.password ? 'border border-[#ff4d4f]' : 'border border-gray-200 focus:border-blue-500'}`}
           />
           <button
             type="button"
@@ -77,6 +125,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
             <img src={isPasswordVisible ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" className="w-[16px] h-[16px]" />
           </button>
         </div>
+        <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.password && errors.password ? errors.password : ''}</p>
       </div>
 
       <div className="w-full max-w-[640px] min-w-[400px] flex justify-end -mt-[4px]">

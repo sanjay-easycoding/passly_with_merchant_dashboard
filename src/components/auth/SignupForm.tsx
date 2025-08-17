@@ -13,6 +13,8 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [touched, setTouched] = React.useState<{ name?: boolean; email?: boolean }>({});
+  const [errors, setErrors] = React.useState<{ name?: string; email?: string }>({});
   const pathname = usePathname();
   const router = useRouter();
   const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
@@ -24,11 +26,16 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      if (onSubmit) {
-        await onSubmit({ name, email });
-      } else {
-        router.push(`/${detectedLocale}/login`);
-      }
+      const validationErrors: { name?: string; email?: string } = {};
+      if (!name.trim()) validationErrors.name = 'Name is required';
+      if (!email) validationErrors.email = 'Email is required';
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) validationErrors.email = 'Enter a valid email';
+
+      setErrors(validationErrors);
+      if (Object.keys(validationErrors).length > 0) return;
+
+      if (onSubmit) await onSubmit({ name, email });
+      else router.push(`/${detectedLocale}/login`);
     } finally {
       setIsSubmitting(false);
     }
@@ -49,11 +56,20 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
               type="text"
               required
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (touched.name) setErrors((prev) => ({ ...prev, name: e.target.value.trim() ? undefined : 'Name is required' }));
+              }}
+              onBlur={() => {
+                setTouched((t) => ({ ...t, name: true }));
+                setErrors((prev) => ({ ...prev, name: name.trim() ? undefined : 'Name is required' }));
+              }}
               placeholder="Your name"
-              className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+              aria-invalid={!!errors.name}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.name ? 'border border-[#ff4d4f]' : 'border border-gray-200 focus:border-blue-500'}`}
             />
           </div>
+          <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.name && errors.name ? errors.name : ''}</p>
         </div>
 
         {/* Email */}
@@ -66,11 +82,35 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
               required
               autoComplete="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (touched.email)
+                  setErrors((prev) => ({
+                    ...prev,
+                    email: !e.target.value
+                      ? 'Email is required'
+                      : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)
+                      ? undefined
+                      : 'Enter a valid email',
+                  }));
+              }}
+              onBlur={() => {
+                setTouched((t) => ({ ...t, email: true }));
+                setErrors((prev) => ({
+                  ...prev,
+                  email: !email
+                    ? 'Email is required'
+                    : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+                    ? undefined
+                    : 'Enter a valid email',
+                }));
+              }}
               placeholder="e-mail"
-              className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+              aria-invalid={!!errors.email}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.email ? 'border border-[#ff4d4f]' : 'border border-gray-200 focus:border-blue-500'}`}
             />
           </div>
+          <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.email && errors.email ? errors.email : ''}</p>
         </div>
 
         <button

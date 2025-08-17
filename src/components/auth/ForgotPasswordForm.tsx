@@ -11,6 +11,8 @@ type ForgotPasswordFormProps = {
 export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps) {
   const [email, setEmail] = React.useState("");
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [touched, setTouched] = React.useState(false);
+  const [error, setError] = React.useState<string | undefined>(undefined);
   const pathname = usePathname();
   const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
   const t = getTranslations(detectedLocale);
@@ -22,6 +24,9 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      setError(isValid ? undefined : 'Enter a valid email');
+      if (!isValid) return;
       await onSubmit?.({ email });
     } finally {
       setIsSubmitting(false);
@@ -45,11 +50,20 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
               required
               autoComplete="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (touched) setError(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value) ? undefined : 'Enter a valid email');
+              }}
+              onBlur={() => {
+                setTouched(true);
+                setError(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? undefined : 'Enter a valid email');
+              }}
               placeholder="e-mail"
-              className="w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-teal-400"
+              aria-invalid={!!error}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${error ? 'border border-[#ff4d4f]' : 'border border-teal-300 focus:border-teal-400'}`}
             />
           </div>
+          <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched && error ? error : ''}</p>
         </div>
 
         <button
