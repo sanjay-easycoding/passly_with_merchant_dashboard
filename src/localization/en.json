@@ -18,6 +18,10 @@
     },
     "createPass": {
       "create": "Create a new pass"
+    },
+    "login": {
+      "title": "Enter Portal",
+      "subtitle": "Access your account securely"
     }
   },
   "joinThousands": {

@@ -18,6 +18,10 @@
     },
     "createPass": {
       "create": "Erstellen Sie einen neuen Pass"
+    },
+    "login": {
+      "title": "Portal betreten",
+      "subtitle": "Greifen Sie sicher auf Ihr Konto zu"
     }
   },
   "joinThousands": {

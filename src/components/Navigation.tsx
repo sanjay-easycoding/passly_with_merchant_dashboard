@@ -69,6 +69,13 @@ const Navigation = ({ locale }: NavigationProps) => {
     return `/${currentLocale}/${href}`;
   };
 
+  // Build same-path URL for a different locale
+  const buildLocalePath = (targetLocale: Locale) => {
+    const remainder = pathname.replace(/^\/(en|de)/, '');
+    const path = `/${targetLocale}${remainder || ''}`;
+    return path;
+  };
+
   // Close mobile menu when clicking a link
   const handleMobileNavClick = () => {
     setIsMobileMenuOpen(false);
@@ -131,21 +138,7 @@ const Navigation = ({ locale }: NavigationProps) => {
                       onClick={() => {
                         setSelectedLanguage(lang.code as Locale);
                         setIsDropdownOpen(false);
-                        
-                        // Get current section from pathname
-                        const currentPath = pathname;
-                        let targetPath = `/${lang.code}`;
-                        
-                        // If we're in a specific section, navigate to that section in new language
-                        if (currentPath.includes('/dashboard')) {
-                          targetPath = `/${lang.code}/dashboard`;
-                        } else if (currentPath.includes('/settings')) {
-                          targetPath = `/${lang.code}/settings`;
-                        } else if (currentPath.includes('/create-pass')) {
-                          targetPath = `/${lang.code}/create-pass`;
-                        }
-                        
-                        // Redirect to the new locale with same section
+                        const targetPath = buildLocalePath(lang.code as Locale);
                         window.location.href = targetPath;
                       }}
                       className={`w-full px-4 py-3 text-left transition-colors duration-150 ${
@@ -162,8 +155,9 @@ const Navigation = ({ locale }: NavigationProps) => {
             </div>
             
             {navButtons.map((button) => (
-              <button
+              <Link
                 key={button.name}
+                href={getNavLink('login')}
                 className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
                   button.variant === "primary" 
                     ? "bg-black text-white hover:bg-gray-800"
@@ -171,7 +165,7 @@ const Navigation = ({ locale }: NavigationProps) => {
                 }`}
               >
                 {t.navigation[button.name as keyof typeof t.navigation]}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -202,21 +196,7 @@ const Navigation = ({ locale }: NavigationProps) => {
                       onClick={() => {
                         setSelectedLanguage(lang.code as Locale);
                         setIsDropdownOpen(false);
-                        
-                        // Get current section from pathname
-                        const currentPath = pathname;
-                        let targetPath = `/${lang.code}`;
-                        
-                        // If we're in a specific section, navigate to that section in new language
-                        if (currentPath.includes('/dashboard')) {
-                          targetPath = `/${lang.code}/dashboard`;
-                        } else if (currentPath.includes('/settings')) {
-                          targetPath = `/${lang.code}/settings`;
-                        } else if (currentPath.includes('/create-pass')) {
-                          targetPath = `/${lang.code}/create-pass`;
-                        }
-                        
-                        // Redirect to the new locale with same section
+                        const targetPath = buildLocalePath(lang.code as Locale);
                         window.location.href = targetPath;
                       }}
                       className={`w-full px-4 py-3 text-left transition-colors duration-150 text-sm ${
@@ -285,16 +265,18 @@ const Navigation = ({ locale }: NavigationProps) => {
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex flex-col space-y-2">
               {navButtons.map((button) => (
-                <button
+                <Link
                   key={button.name}
-                  className={`w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  href={getNavLink('login')}
+                  onClick={handleMobileNavClick}
+                  className={`w-full block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     button.variant === "primary" 
                       ? "text-white bg-black hover:bg-gray-800" 
                       : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
                   {t.navigation[button.name as keyof typeof t.navigation]}
-                </button>
+                </Link>
               ))}
             </div>
           </div>

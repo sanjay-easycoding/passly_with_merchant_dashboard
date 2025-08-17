@@ -1,5 +1,4 @@
 import { translations, type Locale } from '@/lib/translations';
-import Navigation from '@/components/Navigation';
 
 export async function generateStaticParams() {
   return [
@@ -19,7 +18,6 @@ export default function LocaleLayout({
   
   return (
     <div>
-      <Navigation locale={params.locale} />
       <main>
         {children}
       </main>

@@ -1,0 +1,46 @@
+import React from 'react';
+
+type AuthTwoColumnProps = {
+  children: React.ReactNode;
+  rightSlot?: React.ReactNode;
+  rightImageSrc?: string;
+};
+
+export default function AuthTwoColumn({
+  children,
+  rightSlot,
+  rightImageSrc = '/login1.jpg',
+}: AuthTwoColumnProps) {
+  return (
+    <section className="w-full min-h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full min-h-screen">
+        {/* Left side */}
+        <div className="relative bg-gray-50 flex items-start justify-center pt-20 md:pt-24 pb-12 px-4 sm:px-6">
+          {/* Ellipse image (top-left) */}
+          <div className="absolute top-0 left-0 z-10 w-[150px] h-[150px]">
+            <img src="/Ellipse.png" alt="Ellipse" className="w-full h-full object-cover" />
+          </div>
+
+          {/* Children container (title, subtitle, form, etc. should be provided by child component) */}
+          {children}
+
+          {/* Group image (bottom-right) */}
+          <div className="absolute right-4 bottom-4 z-10 w-[150px] h-[150px]">
+            <img src="/Group.png" alt="Group" className="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        {/* Right side */}
+        <div className="relative bg-gray-50 hidden md:block">
+          {rightSlot ? (
+            rightSlot
+          ) : (
+            <img src={rightImageSrc} alt="Login" className="absolute inset-0 w-full h-full object-cover" />
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
