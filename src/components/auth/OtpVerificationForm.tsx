@@ -1,6 +1,8 @@
 "use client";
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import { getTranslations, type Locale } from '@/lib/translations';
 
 type OtpVerificationFormProps = {
   onVerify?: (otp: string) => void | Promise<void>;
@@ -8,6 +10,13 @@ type OtpVerificationFormProps = {
 };
 
 export default function OtpVerificationForm({ onVerify, onBack }: OtpVerificationFormProps) {
+  const pathname = usePathname();
+  const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
+  const t = getTranslations(detectedLocale);
+  const title = t?.pages?.forgotPasswordOtp?.title ?? 'Identity Validation';
+  const subtitle = t?.pages?.forgotPasswordOtp?.subtitle ?? 'Enter OTP';
+  const verifyLabel = t?.pages?.forgotPasswordOtp?.verify ?? 'Verify';
+  const backLabel = t?.pages?.forgotPasswordOtp?.back ?? 'Back';
   const [digits, setDigits] = React.useState<string[]>(["", "", "", ""]);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const inputsRef = React.useRef<Array<HTMLInputElement | null>>([]);
@@ -46,8 +55,8 @@ export default function OtpVerificationForm({ onVerify, onBack }: OtpVerificatio
   return (
     <div className="flex flex-col items-center w-full max-w-[400px]">
       <div className="w-full">
-        <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[25px]">Identity Validation</h1>
-        <p className="text-center text-gray-600 text-[16px] mb-[50px]">Enter OTP</p>
+        <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[25px]">{title}</h1>
+        <p className="text-center text-gray-600 text-[16px] mb-[50px]">{subtitle}</p>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col items-center w-full gap-[25px]">
         <div className="flex items-center justify-center gap-8 mb-[50px]">
@@ -71,7 +80,7 @@ export default function OtpVerificationForm({ onVerify, onBack }: OtpVerificatio
           disabled={isSubmitting}
           className="w-full max-w-[520px] min-w-[320px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95"
         >
-          {isSubmitting ? 'Verifying…' : 'Verify'}
+          {isSubmitting ? 'Verifying…' : verifyLabel}
         </button>
 
         <button
@@ -79,7 +88,7 @@ export default function OtpVerificationForm({ onVerify, onBack }: OtpVerificatio
           onClick={onBack}
           className="w-full max-w-[520px] min-w-[320px] rounded-[12px] border border-gray-300 bg-white py-[15px] text-gray-900 text-[20px] font-medium hover:bg-gray-50"
         >
-          Back
+          {backLabel}
         </button>
       </form>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthLangSwitch from './AuthLangSwitch';
 
 type AuthTwoColumnProps = {
   children: React.ReactNode;
@@ -16,6 +17,9 @@ export default function AuthTwoColumn({
       <div className="grid grid-cols-1 md:grid-cols-2 w-full min-h-screen">
         {/* Left side */}
         <div className="relative bg-gray-50 flex items-start justify-center pt-20 md:pt-24 pb-12 px-4 sm:px-6">
+          <div className="absolute top-4 right-4 z-20">
+            <AuthLangSwitch />
+          </div>
           {/* Ellipse image (top-left) */}
           <div className="absolute top-0 left-0 z-10 w-[150px] h-[150px]">
             <img src="/Ellipse.png" alt="Ellipse" className="w-full h-full object-cover" />
@@ -31,7 +35,7 @@ export default function AuthTwoColumn({
         </div>
 
         {/* Right side */}
-        <div className="relative bg-gray-50 hidden md:block">
+        <div className="relative bg-gray-50 block h-[40vh] sm:h-[50vh] md:h-auto md:block">
           {rightSlot ? (
             rightSlot
           ) : (

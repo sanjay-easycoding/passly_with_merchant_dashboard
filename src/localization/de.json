@@ -21,16 +21,53 @@
     },
     "login": {
       "title": "Portal betreten",
-      "subtitle": "Greifen Sie sicher auf Ihr Konto zu"
+      "subtitle": "Greifen Sie sicher auf Ihr Konto zu",
+      "emailPlaceholder": "E-Mail",
+      "passwordPlaceholder": "Passwort",
+      "forgot": "Passwort vergessen",
+      "loginCta": "Anmelden",
+      "noAccount": "Sie haben noch kein Konto?",
+      "signup": "Registrieren",
+      "orWith": "oder anmelden mit"
     },
     "forgotPassword": {
       "title": "Identitätsbestätigung",
       "subtitle": "Geben Sie Ihre E-Mail ein, um den OTP zu erhalten.",
       "cta": "OTP anfordern"
     },
+    "forgotPasswordOtp": {
+      "title": "Identitätsprüfung",
+      "subtitle": "OTP eingeben",
+      "verify": "Prüfen",
+      "back": "Zurück"
+    },
+    "forgotPasswordSuccess": {
+      "title": "Verifiziert !",
+      "heading": "Verifizierung erfolgreich",
+      "message": "Ihr Passwort wurde erfolgreich zurückgesetzt.",
+      "done": "Fertig"
+    },
     "signup": {
       "title": "Lass uns dich in Sekunden einrichten.",
-      "continueCta": "Weiter"
+      "continueCta": "Weiter",
+      "namePlaceholder": "Ihr Name",
+      "emailPlaceholder": "E-Mail",
+      "alreadyAccount": "Sie haben bereits ein Konto?",
+      "signin": "Anmelden",
+      "orWith": "oder registrieren mit"
+    },
+    "signupPassword": {
+      "titleLine1": "Baue deinen Schlüssel zum",
+      "titleLine2": "Königreich",
+      "register": "Registrieren",
+      "back": "Zurück",
+      "terms": "Allgemeine Geschäftsbedingungen"
+    },
+    "signupSuccess": {
+      "title": "Erfolg !",
+      "heading": "Konto erfolgreich erstellt",
+      "message": "zusätzlicher Hinweis",
+      "done": "Fertig"
     }
   },
   "joinThousands": {

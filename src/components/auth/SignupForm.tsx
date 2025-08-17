@@ -21,6 +21,11 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
   const t = getTranslations(detectedLocale);
   const title = t?.pages?.signup?.title ?? "Let's set you up in seconds.";
   const cta = t?.pages?.signup?.continueCta ?? 'Continue';
+  const namePh = t?.pages?.signup?.namePlaceholder ?? 'Your name';
+  const emailPh = t?.pages?.signup?.emailPlaceholder ?? 'e-mail';
+  const already = t?.pages?.signup?.alreadyAccount ?? 'Already have an account ?';
+  const signin = t?.pages?.signup?.signin ?? 'Sign-in';
+  const orWith = t?.pages?.signup?.orWith ?? 'or Sign-up with';
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,7 +47,7 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full max-w-[400px]">
       <div className="w-full">
         <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[50px]">{title}</h1>
       </div>
@@ -64,9 +69,9 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
                 setTouched((t) => ({ ...t, name: true }));
                 setErrors((prev) => ({ ...prev, name: name.trim() ? undefined : 'Name is required' }));
               }}
-              placeholder="Your name"
+              placeholder={namePh}
               aria-invalid={!!errors.name}
-              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.name ? 'border border-[#ff4d4f]' : 'border border-gray-200 focus:border-blue-500'}`}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.name ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-gray-200 focus:border-gray-200'}`}
             />
           </div>
           <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.name && errors.name ? errors.name : ''}</p>
@@ -105,9 +110,9 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
                     : 'Enter a valid email',
                 }));
               }}
-              placeholder="e-mail"
+              placeholder={emailPh}
               aria-invalid={!!errors.email}
-              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.email ? 'border border-[#ff4d4f]' : 'border border-gray-200 focus:border-blue-500'}`}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.email ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-gray-200 focus:border-gray-200'}`}
             />
           </div>
           <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.email && errors.email ? errors.email : ''}</p>
@@ -122,12 +127,12 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
         </button>
 
         <p className="text-[16px] text-black mt-4">
-          Already have an account ?{' '}
-          <Link href={`/${detectedLocale}/login`} className="text-blue-500 font-semibold">Sign-in</Link>
+          {already}{' '}
+          <Link href={`/${detectedLocale}/login`} className="text-blue-500 font-semibold">{signin}</Link>
         </p>
 
         <div className="relative w-full text-center mt-3">
-          <span className="relative z-10 px-4 bg-transparent text-black text-[16px]">or Sign-up with</span>
+          <span className="relative z-10 px-4 bg-transparent text-black text-[16px]">{orWith}</span>
         </div>
 
         <div className="mt-6 flex items-center justify-center gap-[40px] w-full">

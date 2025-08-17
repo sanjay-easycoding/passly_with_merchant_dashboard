@@ -1,6 +1,8 @@
 "use client";
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import { getTranslations, type Locale } from '@/lib/translations';
 
 type SignupPasswordFormProps = {
   onRegister?: (form: { password: string; confirmPassword: string; accepted: boolean }) => void | Promise<void>;
@@ -8,6 +10,13 @@ type SignupPasswordFormProps = {
 };
 
 export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswordFormProps) {
+  const pathname = usePathname();
+  const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
+  const t = getTranslations(detectedLocale);
+  const line1 = t?.pages?.signupPassword?.titleLine1 ?? 'Build your key to the';
+  const line2 = t?.pages?.signupPassword?.titleLine2 ?? 'kingdom';
+  const register = t?.pages?.signupPassword?.register ?? 'Register';
+  const back = t?.pages?.signupPassword?.back ?? 'Back';
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
@@ -36,12 +45,12 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
   }
 
   return (
-    <div className="flex flex-col">
-      <div className="w-full">
+    <div className="flex flex-col w-full max-w-[400px]">
+      <div className="w-full ">
         <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[28px]">
-          Build your key to the
+          {line1}
           <br />
-          kingdom
+          {line2}
         </h1>
       </div>
 
@@ -65,7 +74,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               }}
               placeholder="Password"
               aria-invalid={!!errors.password}
-              className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.password ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-gray-200 focus:border-gray-200'}`}
             />
             <button
               type="button"
@@ -97,7 +106,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               }}
               placeholder="Re-Enter Password"
               aria-invalid={!!errors.confirm}
-              className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[52px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${errors.confirm ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-gray-200 focus:border-gray-200'}`}
             />
             <button
               type="button"
@@ -127,7 +136,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
           disabled={isSubmitting || !accepted || password !== confirmPassword}
           className="w-full max-w-[520px] min-w-[320px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95 disabled:opacity-60"
         >
-          {isSubmitting ? 'Registering…' : 'Register'}
+          {isSubmitting ? 'Registering…' : register}
         </button>
 
         <button
@@ -135,7 +144,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
           onClick={onBack}
           className="w-full max-w-[520px] min-w-[320px] rounded-[12px] border border-gray-300 bg-white py-[15px] text-gray-900 text-[20px] font-medium hover:bg-gray-50"
         >
-          Back
+          {back}
         </button>
       </form>
     </div>

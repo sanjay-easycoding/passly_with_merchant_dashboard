@@ -21,16 +21,53 @@
     },
     "login": {
       "title": "Enter Portal",
-      "subtitle": "Access your account securely"
+      "subtitle": "Access your account securely",
+      "emailPlaceholder": "e-mail",
+      "passwordPlaceholder": "Password",
+      "forgot": "Forgot Password",
+      "loginCta": "Log-in",
+      "noAccount": "Don't have an account ?",
+      "signup": "Sign-up",
+      "orWith": "or Sign-up with"
     },
     "forgotPassword": {
       "title": "Identity Confirmation",
       "subtitle": "Enter mail id to get OTP.",
       "cta": "Get OTP"
     },
+    "forgotPasswordOtp": {
+      "title": "Identity Validation",
+      "subtitle": "Enter OTP",
+      "verify": "Verify",
+      "back": "Back"
+    },
+    "forgotPasswordSuccess": {
+      "title": "Verified !",
+      "heading": "Verification Successful",
+      "message": "Your password has been reset successfully.",
+      "done": "Done"
+    },
     "signup": {
       "title": "Let's set you up in seconds.",
-      "continueCta": "Continue"
+      "continueCta": "Continue",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "e-mail",
+      "alreadyAccount": "Already have an account ?",
+      "signin": "Sign-in",
+      "orWith": "or Sign-up with"
+    },
+    "signupPassword": {
+      "titleLine1": "Build your key to the",
+      "titleLine2": "kingdom",
+      "register": "Register",
+      "back": "Back",
+      "terms": "Terms & Conditions"
+    },
+    "signupSuccess": {
+      "title": "Success !",
+      "heading": "Account Creation Successful",
+      "message": "supporting subtext",
+      "done": "Done"
     }
   },
   "joinThousands": {

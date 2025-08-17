@@ -34,7 +34,7 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full max-w-[400px]">
       <div className="w-full">
         <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[20px] mt-[70px]">{title}</h1>
         <p className="text-center text-[black] text-[16px] mb-[58px]">{subtitle}</p>
@@ -60,7 +60,7 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
               }}
               placeholder="e-mail"
               aria-invalid={!!error}
-              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${error ? 'border border-[#ff4d4f]' : 'border border-teal-300 focus:border-teal-400'}`}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${error ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-teal-300 focus:border-teal-300'}`}
             />
           </div>
           <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched && error ? error : ''}</p>
