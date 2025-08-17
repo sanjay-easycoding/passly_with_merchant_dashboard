@@ -22,6 +22,15 @@
     "login": {
       "title": "Portal betreten",
       "subtitle": "Greifen Sie sicher auf Ihr Konto zu"
+    },
+    "forgotPassword": {
+      "title": "Identitätsbestätigung",
+      "subtitle": "Geben Sie Ihre E-Mail ein, um den OTP zu erhalten.",
+      "cta": "OTP anfordern"
+    },
+    "signup": {
+      "title": "Lass uns dich in Sekunden einrichten.",
+      "continueCta": "Weiter"
     }
   },
   "joinThousands": {

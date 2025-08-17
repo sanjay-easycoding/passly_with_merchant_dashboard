@@ -22,6 +22,15 @@
     "login": {
       "title": "Enter Portal",
       "subtitle": "Access your account securely"
+    },
+    "forgotPassword": {
+      "title": "Identity Confirmation",
+      "subtitle": "Enter mail id to get OTP.",
+      "cta": "Get OTP"
+    },
+    "signup": {
+      "title": "Let's set you up in seconds.",
+      "continueCta": "Continue"
     }
   },
   "joinThousands": {

@@ -1,0 +1,109 @@
+"use client";
+
+import React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { getTranslations, type Locale } from '@/lib/translations';
+
+type SignupFormProps = {
+  onSubmit?: (form: { name: string; email: string }) => void | Promise<void>;
+};
+
+export default function SignupForm({ onSubmit }: SignupFormProps) {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
+  const t = getTranslations(detectedLocale);
+  const title = t?.pages?.signup?.title ?? "Let's set you up in seconds.";
+  const cta = t?.pages?.signup?.continueCta ?? 'Continue';
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      if (onSubmit) {
+        await onSubmit({ name, email });
+      } else {
+        router.push(`/${detectedLocale}/login`);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  return (
+    <div className="flex flex-col">
+      <div className="w-full">
+        <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[50px]">{title}</h1>
+      </div>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center gap-[24px]">
+        {/* Name */}
+        <div className="w-full max-w-[640px] min-w-[400px]">
+          <div className="relative w-full">
+            <img src="/nameIcon.png" alt="name" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <input
+              id="name"
+              type="text"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your name"
+              className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        {/* Email */}
+        <div className="w-full max-w-[640px] min-w-[400px]">
+          <div className="relative w-full">
+            <img src="/emailIcon.png" alt="email" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <input
+              id="email"
+              type="email"
+              required
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="e-mail"
+              className="w-full rounded-[12px] border border-gray-200 bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full max-w-[520px] min-w-[320px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95"
+        >
+          {isSubmitting ? 'Please wait…' : cta}
+        </button>
+
+        <p className="text-[16px] text-black mt-4">
+          Already have an account ?{' '}
+          <Link href={`/${detectedLocale}/login`} className="text-blue-500 font-semibold">Sign-in</Link>
+        </p>
+
+        <div className="relative w-full text-center mt-3">
+          <span className="relative z-10 px-4 bg-transparent text-black text-[16px]">or Sign-up with</span>
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-[40px] w-full">
+          <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
+            <img src="/google.png" alt="Google" className="w-[60px] h-[60px] object-contain" />
+          </button>
+          <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
+            <img src="/facebook.png" alt="Facebook" className="w-[60px] h-[60px] object-contain" />
+          </button>
+          <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
+            <img src="/twitter.png" alt="Twitter" className="w-[60px] h-[60px] object-contain" />
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+

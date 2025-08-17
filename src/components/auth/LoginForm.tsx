@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { getTranslations, type Locale } from '@/lib/translations';
 
 type LoginFormProps = {
@@ -79,19 +80,19 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       </div>
 
       <div className="w-full max-w-[640px] min-w-[400px] flex justify-end -mt-[4px]">
-        <a href="#" className="text-blue-500 font-semibold text-[14px] hover:underline">Forgot Password</a>
+        <Link href={`/${detectedLocale}/forgot-password`} className="text-blue-500 font-semibold text-[14px] hover:underline">Forgot Password</Link>
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full max-w-[640px] min-w-[400px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95"
+        className="w-full max-w-[520px] min-w-[320px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95"
       >
         {isSubmitting ? "Logging in..." : "Log-in"}
       </button>
 
       <p className="text-[16px] text-black mt-4">
-        Don't have an account ? <a href="#" className="text-blue-500 font-semibold">Sign-up</a>
+        Don't have an account ? <Link href={`/${detectedLocale}/signup`} className="text-blue-500 font-semibold">Sign-up</Link>
       </p>
 
       <div className="relative w-full text-center mt-3">
