@@ -1,12 +1,14 @@
 "use client";
+
+import Image from 'next/image';
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useTranslations } from '@/lib/translations';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
+import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
-import { setLogoUrl, setBrandColor, setTagline } from '@/store/builderSlice';
+import { setBrandColor, setLogoUrl, setTagline } from '@/store/builderSlice';
 
 import type { Locale } from '@/lib/translations';
 
@@ -84,7 +86,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
                 <div className="mt-2 text-sm">{t.branding.logo.fileTypes}</div>
               </div>
             ) : (
-              <img src={localLogoUrl} alt="Logo preview" className="max-h-full max-w-full object-contain" />
+              <Image src={localLogoUrl} alt="Logo preview" width={200} height={200} className="max-h-full max-w-full object-contain" />
             )}
           </div>
           <input
@@ -153,7 +155,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
             >
               {t.branding.brandColor.chooseOther}
             </button>
-            <input ref={colorRef} type="color" value={hex} onChange={(e) => { handleChoose(e); try { const prev = JSON.parse(localStorage.getItem('passly_builder') || '{}'); localStorage.setItem('passly_builder', JSON.stringify({ ...prev, brandColor: e.target.value })); } catch {} }} className="hidden" />
+            <input ref={colorRef} type="color" value={hex} onChange={(e) => { handleChoose(e); try { const prev = JSON.parse(localStorage.getItem('passly_builder') || '{}'); localStorage.setItem('passly_builder', JSON.stringify({ ...prev, brandColor: e.target.value })); } catch { /* Ignore localStorage errors */ } }} className="hidden" />
           </div>
 
           <div className="flex items-center gap-3 my-5">

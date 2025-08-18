@@ -4,7 +4,7 @@ import type { Locale } from '@/lib/translations';
 
 export default function CreatePassBuilderLayout({
   children,
-  params,
+  params: _params,
 }: {
   children: React.ReactNode;
   params: { locale: Locale };

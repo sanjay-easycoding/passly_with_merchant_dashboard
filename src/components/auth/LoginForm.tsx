@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
@@ -23,7 +24,6 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
   const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
   const t = getTranslations(detectedLocale);
   const title = t?.pages?.login?.title ?? 'Enter Portal';
-  const subtitle = t?.pages?.login?.subtitle as string | undefined;
   const emailPh = t?.pages?.login?.emailPlaceholder ?? 'e-mail';
   const passwordPh = t?.pages?.login?.passwordPlaceholder ?? 'Password';
   const forgot = t?.pages?.login?.forgot ?? 'Forgot Password';
@@ -80,7 +80,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       {/* Email */}
       <div className="w-full max-w-[640px] min-w-[400px]">
         <div className="relative w-full">
-          <img src="/emailIcon.png" alt="email" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+          <Image src="/emailIcon.png" alt="email" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
           <input
             id="email"
             type="email"
@@ -122,7 +122,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       {/* Password */}
       <div className="w-full max-w-[640px] min-w-[400px]">
         <div className="relative w-full">
-          <img src="/lockIcon.png" alt="lock" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+          <Image src="/lockIcon.png" alt="lock" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
           <input
             id="password"
             type={isPasswordVisible ? "text" : "password"}
@@ -149,7 +149,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
             onClick={() => setIsPasswordVisible((v) => !v)}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
           >
-            <img src={isPasswordVisible ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" className="w-[16px] h-[16px]" />
+            <Image src={isPasswordVisible ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" width={16} height={16} className="w-[16px] h-[16px]" />
           </button>
         </div>
         <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched.password && errors.password ? errors.password : ''}</p>
@@ -181,13 +181,13 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
 
       <div className="mt-6 flex items-center justify-center gap-[40px] w-full">
         <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
-          <img src="/google.png" alt="Google" className="w-[60px] h-[60px] object-contain" />
+          <Image src="/google.png" alt="Google" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
         </button>
         <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
-          <img src="/facebook.png" alt="Facebook" className="w-[60px] h-[60px] object-contain" />
+          <Image src="/facebook.png" alt="Facebook" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
         </button>
         <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
-          <img src="/twitter.png" alt="Twitter" className="w-[60px] h-[60px] object-contain" />
+          <Image src="/twitter.png" alt="Twitter" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
         </button>
       </div>
     </form>

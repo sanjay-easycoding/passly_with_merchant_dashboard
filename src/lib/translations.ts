@@ -3,7 +3,10 @@ import en from '../localization/en.json';
 
 export type Locale = 'de' | 'en';
 
-export const translations = {
+// Define a more specific type for translations
+type TranslationData = Record<string, unknown>;
+
+export const translations: Record<Locale, TranslationData> = {
   de,
   en
 };
@@ -15,7 +18,7 @@ export function getTranslations(locale: Locale) {
 }
 
 export function useTranslations(locale: Locale, page: string) {
-  const pageTranslations = (translations[locale] as any)?.[page] || (translations[defaultLocale] as any)?.[page];
+  const pageTranslations = (translations[locale] as TranslationData)?.[page] || (translations[defaultLocale] as TranslationData)?.[page];
   if (!pageTranslations) {
     throw new Error(`Translations not found for page: ${page}`);
   }

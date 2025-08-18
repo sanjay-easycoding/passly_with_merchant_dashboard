@@ -4,7 +4,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 // Type the children prop
-const CreateNewPassLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const CreateNewPassLayout: React.FC<React.PropsWithChildren<Record<string, never>>> = ({ children }) => {
   const { locale } = useParams();
   const router = useRouter();
 

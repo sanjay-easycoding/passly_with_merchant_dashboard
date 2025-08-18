@@ -1,6 +1,7 @@
+import Image from 'next/image';
 import React from 'react';
 
-import { getTranslations, type Locale } from '@/lib/translations';
+import { useTranslations } from '@/lib/translations';
 
 
 interface FooterProps {
@@ -8,7 +9,7 @@ interface FooterProps {
 }
 
 const Footer = ({ locale }: FooterProps) => {
-  const t = getTranslations(locale);
+  const t = useTranslations(locale);
 
   return (
     <>
@@ -79,7 +80,7 @@ const Footer = ({ locale }: FooterProps) => {
               <div className="space-y-6">
                 {/* Logo/Icon */}
                 <div className="flex items-center space-x-3">
-                  <img src="/passly_logo.svg" alt="Passly Logo" className="w-12 h-10" />
+                  <Image src="/passly_logo.svg" alt="Passly Logo" width={48} height={40} className="w-12 h-10" />
                   <span className="text-2xl sm:text-3xl font-bold text-black lg:text-white">Passly</span>
                 </div>
                 

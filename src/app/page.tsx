@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
-
 import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 

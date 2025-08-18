@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
@@ -59,7 +60,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
         {/* Password */}
         <div className="w-full max-w-[640px] min-w-[400px]">
           <div className="relative w-full">
-            <img src="/lockIcon.png" alt="lock" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <Image src="/lockIcon.png" alt="lock" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
             <input
               id="password"
               type={showPassword ? 'text' : 'password'}
@@ -82,7 +83,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               onClick={() => setShowPassword((v) => !v)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
             >
-              <img src={showPassword ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" className="w-[16px] h-[16px]" />
+              <Image src={showPassword ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" width={16} height={16} className="w-[16px] h-[16px]" />
             </button>
           </div>
           <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{errors.password ? errors.password : ''}</p>
@@ -91,7 +92,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
         {/* Confirm Password */}
         <div className="w-full max-w-[640px] min-w-[400px]">
           <div className="relative w-full">
-            <img src="/lockIcon.png" alt="lock" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <Image src="/lockIcon.png" alt="lock" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
             <input
               id="confirmPassword"
               type={showConfirm ? 'text' : 'password'}
@@ -114,7 +115,7 @@ export default function SignupPasswordForm({ onRegister, onBack }: SignupPasswor
               onClick={() => setShowConfirm((v) => !v)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
             >
-              <img src={showConfirm ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" className="w-[16px] h-[16px]" />
+              <Image src={showConfirm ? '/hidePassword.svg' : '/showPassword.svg'} alt="toggle" width={16} height={16} className="w-[16px] h-[16px]" />
             </button>
           </div>
           <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{errors.confirm ? errors.confirm : ''}</p>

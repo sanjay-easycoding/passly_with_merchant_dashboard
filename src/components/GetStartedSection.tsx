@@ -1,13 +1,13 @@
+import Image from 'next/image';
 import React from 'react';
 
-import { getTranslations, type Locale } from '@/lib/translations';
+import { type Locale } from '@/lib/translations';
 
 interface GetStartedSectionProps {
   locale: Locale;
 }
 
 const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
-  const t = getTranslations(locale);
 
   return (
     <>
@@ -62,9 +62,11 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
                 </p>
                 
                 <div className="flex justify-center mb-4 sm:mb-6">
-                  <img 
+                  <Image 
                     src="/getStartedPhone.png" 
                     alt="Phone with QR code" 
+                    width={192}
+                    height={384}
                     className="w-32 sm:w-40 md:w-48 h-96"
                   />
                 </div>
@@ -102,9 +104,11 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
               <div >
            
               <div className="flex justify-end mb-4 sm:mb-6">
-                  <img 
+                  <Image 
                     src="/getStartedMonitor.jpg" 
                     alt="Card customization interface" 
+                    width={100}
+                    height={100}
                     className="w-[100px] h-[100px]"
                   />
                 </div>

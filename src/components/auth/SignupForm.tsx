@@ -1,7 +1,8 @@
 "use client";
 
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import { getTranslations, type Locale } from '@/lib/translations';
@@ -56,7 +57,7 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
         {/* Name */}
         <div className="w-full max-w-[640px] min-w-[400px]">
           <div className="relative w-full">
-            <img src="/nameIcon.png" alt="name" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <Image src="/nameIcon.png" alt="name" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
             <input
               id="name"
               type="text"
@@ -81,7 +82,7 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
         {/* Email */}
         <div className="w-full max-w-[640px] min-w-[400px]">
           <div className="relative w-full">
-            <img src="/emailIcon.png" alt="email" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <Image src="/emailIcon.png" alt="email" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
             <input
               id="email"
               type="email"
@@ -138,13 +139,13 @@ export default function SignupForm({ onSubmit }: SignupFormProps) {
 
         <div className="mt-6 flex items-center justify-center gap-[40px] w-full">
           <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
-            <img src="/google.png" alt="Google" className="w-[60px] h-[60px] object-contain" />
+            <Image src="/google.png" alt="Google" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
           </button>
           <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
-            <img src="/facebook.png" alt="Facebook" className="w-[60px] h-[60px] object-contain" />
+            <Image src="/facebook.png" alt="Facebook" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
           </button>
           <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
-            <img src="/twitter.png" alt="Twitter" className="w-[60px] h-[60px] object-contain" />
+            <Image src="/twitter.png" alt="Twitter" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
           </button>
         </div>
       </form>

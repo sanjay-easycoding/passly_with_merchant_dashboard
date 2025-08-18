@@ -1,6 +1,6 @@
 import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
-import { getTranslations, type Locale } from '@/lib/translations';
+import { type Locale } from '@/lib/translations';
 
 export default function SlugPage({
   params,
@@ -15,8 +15,6 @@ export default function SlugPage({
     
     // Check if it's a valid locale
     if (['en', 'de'].includes(locale)) {
-      const t = getTranslations(locale);
-      
       // Serve content directly for language roots
       return (
         <div>

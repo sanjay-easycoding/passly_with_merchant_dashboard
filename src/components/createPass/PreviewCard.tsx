@@ -1,20 +1,19 @@
+import Image from 'next/image';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import type { RootState } from '@/store';
+import { RootState } from '@/store';
 
 type PreviewCardProps = {
   headerColor?: string;
   title?: string;
   type?: string;
-  codeLine?: string;
   rewardLine?: string;
   starsCount?: number;
-  stampsNeeded?: number | string;
+  stampsNeeded?: number;
   minPurchase?: number | string;
   businessName?: string;
   contact?: string;
-  logoUrl?: string | null;
 };
 
 // Simple presentational card optimized to look like the reference
@@ -22,14 +21,12 @@ export default function PreviewCard({
   headerColor,
   title,
   type,
-  codeLine,
   rewardLine,
   starsCount,
   stampsNeeded,
   minPurchase,
   businessName,
   contact,
-  logoUrl,
 }: PreviewCardProps) {
   // previewCardData from RTK
   const previewCardData = useSelector((s: RootState) => s.builder);
@@ -44,7 +41,6 @@ export default function PreviewCard({
   const resolvedMinPurchase = minPurchase ?? previewCardData.minPurchase;
   const resolvedBusiness = businessName ?? previewCardData.businessName;
   const resolvedContact = contact ?? previewCardData.contact;
-  const resolvedCode = codeLine ?? 'dfsdfsadfsadfsadfasdfdsfafasfsdf';
 
   // Add logo URL and tagline to PreviewCard
   const resolvedLogoUrl = previewCardData.logoUrl;
@@ -61,7 +57,7 @@ export default function PreviewCard({
           {/* Render logo image if available, otherwise use star */}
           <div className="w-8 h-8 rounded-md bg-white/20 flex items-center justify-center">
             {resolvedLogoUrl ? (
-              <img src={resolvedLogoUrl} alt="Logo preview" className="max-h-full max-w-full object-contain" />
+              <Image src={resolvedLogoUrl} alt="Logo preview" width={32} height={32} className="max-h-full max-w-full object-contain" />
             ) : (
               '★'
             )}

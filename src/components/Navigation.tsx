@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
@@ -103,7 +104,7 @@ const Navigation = ({ locale }: NavigationProps) => {
           <div className="flex items-center gap-2">
             {/* Wrap both logo and text in Link */}
             <Link href={`/${locale}/`} className="flex items-center gap-2">
-              <img src="/passly_logo.svg" alt="Passly Logo" className="w-10 h-10 block mb-[18px] mr-[5px] cursor-pointer" />
+              <Image src="/passly_logo.svg" alt="Passly Logo" width={40} height={40} className="w-10 h-10 block mb-[18px] mr-[5px] cursor-pointer" />
               <div className="text-xl sm:text-2xl font-bold text-black cursor-pointer">
                 {t.common.title}
               </div>

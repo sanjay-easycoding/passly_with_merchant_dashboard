@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+
 import { useTranslations } from '@/lib/translations';
 
 const steps = [

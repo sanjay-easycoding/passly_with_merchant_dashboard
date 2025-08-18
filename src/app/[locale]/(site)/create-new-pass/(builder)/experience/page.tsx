@@ -1,17 +1,18 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import { useTranslations } from '@/lib/translations';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
+import { useTranslations } from '@/lib/translations';
+import { RootState } from '@/store';
+
 import type { OffersFrequency } from '@/store/builderSlice';
 
 export default function ExperiencePage() {
   const params = useParams<{ locale: 'en' | 'de' }>();
-  const c = useTranslations(params.locale, 'pages');
   
   // Get data from Redux state
   const builderData = useSelector((state: RootState) => state.builder);
@@ -31,7 +32,7 @@ export default function ExperiencePage() {
     const updatedData = {
       ...currentData,
       welcomeMessage: welcome,
-      instructions: instructions,
+      instructions,
       specialOffers: offers,
       offersFrequency: frequency
     };

@@ -1,12 +1,10 @@
 "use client";
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useTranslations } from '@/lib/translations';
 
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
-// Import necessary hooks and actions
-
+import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
 import { setBusinessName, setContact } from '@/store/builderSlice';
 
@@ -20,7 +18,7 @@ export default function BusinessPage({ params }: { params: { locale: Locale } })
       try {
         const data = JSON.parse(localStorage.getItem('passly_builder') || '{}');
         if (data.campaignName) setCampaignName(data.campaignName);
-      } catch {}
+      } catch { /* Ignore localStorage errors */ }
     }
   }, []);
 

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 import AuthLangSwitch from './AuthLangSwitch';
@@ -23,7 +24,7 @@ export default function AuthTwoColumn({
           </div>
           {/* Ellipse image (top-left) */}
           <div className="absolute top-0 left-0 z-10 w-[150px] h-[150px]">
-            <img src="/Ellipse.png" alt="Ellipse" className="w-full h-full object-cover" />
+            <Image src="/Ellipse.png" alt="Ellipse" width={150} height={150} className="w-full h-full object-cover" />
           </div>
 
           {/* Children container (title, subtitle, form, etc. should be provided by child component) */}
@@ -31,7 +32,7 @@ export default function AuthTwoColumn({
 
           {/* Group image (bottom-right) */}
           <div className="absolute right-4 bottom-4 z-10 w-[150px] h-[150px]">
-            <img src="/Group.png" alt="Group" className="w-full h-full object-cover" />
+            <Image src="/Group.png" alt="Group" width={150} height={150} className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -40,7 +41,7 @@ export default function AuthTwoColumn({
           {rightSlot ? (
             rightSlot
           ) : (
-            <img src={rightImageSrc} alt="Login" className="absolute inset-0 w-full h-full object-cover" />
+            <Image src={rightImageSrc} alt="Login" fill className="object-cover" />
           )}
         </div>
       </div>

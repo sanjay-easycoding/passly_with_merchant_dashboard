@@ -1,14 +1,15 @@
 "use client";
 import React from 'react';
-import { useTranslations } from '@/lib/translations';
+
 
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
+import { useTranslations } from '@/lib/translations';
 
 import type { Locale } from '@/lib/translations';
 
 export default function DistributionPage({ params }: { params: { locale: Locale } }) {
-  const [link, setLink] = React.useState('https://example.com/your-pass');
+  const [link] = React.useState('https://example.com/your-pass');
   const [campaignName, setCampaignName] = React.useState<string>('');
 
   // Get translations
@@ -19,7 +20,7 @@ export default function DistributionPage({ params }: { params: { locale: Locale 
       try {
         const data = JSON.parse(localStorage.getItem('passly_builder') || '{}');
         if (data.campaignName) setCampaignName(data.campaignName);
-      } catch {}
+      } catch { /* Ignore localStorage errors */ }
     }
   }, []);
 

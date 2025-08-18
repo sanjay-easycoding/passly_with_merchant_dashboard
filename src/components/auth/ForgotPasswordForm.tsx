@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
@@ -44,7 +45,7 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
       <form onSubmit={handleSubmit} className="flex flex-col items-center gap-[50px]">
         <div className="w-full max-w-[640px] min-w-[400px]">
           <div className="relative w-full">
-            <img src="/emailIcon.png" alt="email" className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
+            <Image src="/emailIcon.png" alt="email" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
             <input
               id="email"
               type="email"

@@ -1,13 +1,10 @@
 "use client";
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useTranslations } from '@/lib/translations';
 
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
-
-// Import necessary hooks and actions
-
+import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
 import { setStampsNeeded, setRewardDescription } from '@/store/builderSlice';
 
@@ -40,7 +37,7 @@ export default function DetailsPage({ params }: { params: { locale: Locale } }) 
           // This state is managed by Redux, so we don't need to update it here
           // setCampaignName(data.campaignName);
         }
-      } catch {}
+      } catch { /* Ignore localStorage errors */ }
     }
   }, []);
 

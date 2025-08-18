@@ -1,10 +1,12 @@
 "use client";
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useTranslations } from '@/lib/translations';
+
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
+import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
+
 import type { Locale } from '@/lib/translations';
 
 export default function PublishPage({ params }: { params: { locale: Locale } }) {
@@ -16,33 +18,12 @@ export default function PublishPage({ params }: { params: { locale: Locale } }) 
 
   // Display data in review section
   const handlePublish = () => {
-    console.log('Publishing data:', {
-      // Pass Type & Branding
-      campaignName: data.campaignName,
-      type: data.type,
-      brandColor: data.brandColor,
-      logoUrl: data.logoUrl,
-      tagline: data.tagline,
-      
-      // Details
-      rewardDescription: data.rewardDescription,
-      stampsNeeded: data.stampsNeeded,
-      minPurchase: data.minPurchase,
-      
-      // Business
-      businessName: data.businessName,
-      businessAddress: data.businessAddress,
-      contact: data.contact,
-      email: data.email,
-      website: data.website,
-      socialMedia: data.socialMedia,
-      
-      // Experience
-      welcomeMessage: data.welcomeMessage,
-      instructions: data.instructions,
-      specialOffers: data.specialOffers,
-      offersFrequency: data.offersFrequency,
-    });
+    // TODO: Implement actual publishing logic
+    // Data to be published:
+    // - Pass Type & Branding: campaignName, type, brandColor, logoUrl, tagline
+    // - Details: rewardDescription, stampsNeeded, minPurchase
+    // - Business: businessName, businessAddress, contact, email, website, socialMedia
+    // - Experience: welcomeMessage, instructions, specialOffers, offersFrequency
   };
 
   return (

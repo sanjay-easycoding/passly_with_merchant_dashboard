@@ -1,14 +1,15 @@
 "use client";
 
-import { useParams } from 'next/navigation';
-import { useTranslations } from '@/lib/translations';
+import { useState } from 'react';
+import { FaMobileAlt, FaBolt, FaStar } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
 import { clearBuilderData } from '@/store/builderSlice';
-import { useState } from 'react';
+
 
 // Import React Icons
-import { FaMobileAlt, FaBolt, FaStar } from 'react-icons/fa';
 
 export default function CreateNewPassGetStarted({ params }: { params: { locale: 'en' | 'de' } }) {
   const t = useTranslations(params.locale, 'pages');

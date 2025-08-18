@@ -1,10 +1,11 @@
 "use client";
 import React from 'react';
 import { useDispatch , useSelector } from 'react-redux';
-import { useTranslations } from '@/lib/translations';
+
 
 import PreviewCard from '@/components/createPass/PreviewCard';
 import StepNav from '@/components/createPass/StepNav';
+import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
 import { setCampaignName as setCampaignNameAction, setType } from '@/store/builderSlice';
 

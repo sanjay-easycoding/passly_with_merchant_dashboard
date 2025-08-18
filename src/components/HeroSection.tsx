@@ -1,20 +1,19 @@
 "use client"
+import { motion } from 'framer-motion';
 import React from 'react';
 
-import { getTranslations, type Locale } from '@/lib/translations';
+import { type Locale } from '@/lib/translations';
 
 import CoreValuesSection from './CoreValuesSection';
 import Footer from './Footer';
 import GetStartedSection from './GetStartedSection';
 import JoinThousandsSection from './JoinThousandsSection';
-import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   locale: Locale;
 }
 
 const HeroSection = ({ locale }: HeroSectionProps) => {
-  const t = getTranslations(locale);
   
   return (
     <>
