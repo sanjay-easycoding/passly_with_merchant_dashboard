@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation';
+
 import type { Locale } from '@/lib/translations';
 
 export default function SiteLayout({

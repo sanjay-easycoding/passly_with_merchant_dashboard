@@ -1,9 +1,10 @@
 import React from 'react';
-import { getTranslations, type Locale } from '@/lib/translations';
-import {FaMobileAlt} from 'react-icons/fa';
-
-import { IoStarSharp } from 'react-icons/io5';
 import { CgQr } from 'react-icons/cg';
+import {FaMobileAlt} from 'react-icons/fa';
+import { IoStarSharp } from 'react-icons/io5';
+
+import { getTranslations, type Locale } from '@/lib/translations';
+
 
 interface CoreValuesSectionProps {
   locale: Locale;
@@ -34,16 +35,16 @@ const CoreValuesSection = ({ locale }: CoreValuesSectionProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
           {/* Left Column - Textual Description */}
-          <div className="space-y-8 h-full flex flex-col items-start justify-between">
+          <div className="space-y-8 h-full flex flex-col items-center md:items-start justify-between">
             <div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-3 sm:mb-4">
+              <h3 className="text-lg text-center md:text-left sm:text-xl md:text-2xl font-bold text-black mb-3 sm:mb-4">
                 {t.coreValues?.instantDistribution?.title || 'Instant Distribution'}
               </h3>
               <div className="space-y-4 text-gray-700">
-                <p className="text-sm sm:text-base text-black mb-4 sm:mb-6">
+                <p className="text-sm text-justify md:text-left sm:text-base text-black mb-4 sm:mb-6">
                   {t.coreValues?.instantDistribution?.paragraph1 || 'Generate QR codes and links for easy customer access. Effortlessly create and distribute unique QR codes and direct links for your offers, passes, or digital content.'}
                 </p>
-                <p className="text-sm sm:text-base text-black mb-4 sm:mb-6">
+                <p className="text-sm text-justify md:text-left sm:text-base text-black mb-4 sm:mb-6">
                   {t.coreValues?.instantDistribution?.paragraph2 || 'Customers can instantly scan or tap to access what they need—no app downloads, sign-ups, or extra steps required. This seamless process ensures faster engagement, better customer experience, and higher conversion rates for your business.'}
                 </p>
               </div>
@@ -58,6 +59,8 @@ const CoreValuesSection = ({ locale }: CoreValuesSectionProps) => {
                 {t.coreValues?.cta?.knowMore || 'Know more'}
               </button>
             </div>
+
+            
           </div>
 
           {/* Right Column - Feature Cards Layout */}

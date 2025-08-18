@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
-import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import React from 'react';
+
 import { getTranslations, type Locale } from '@/lib/translations';
 
 type SignupFormProps = {

@@ -4,7 +4,182 @@
     "createNewPass": "Neuen Pass erstellen",
     "settings": "Einstellungen",
     "getStarted": "Loslegen",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "builder": {
+    "steps": {
+      "passType": "Pass-Typ",
+      "branding": "Branding",
+      "details": "Details",
+      "business": "Geschäft",
+      "experience": "Erfahrung",
+      "distribution": "Verteilung",
+      "publish": "Veröffentlichen"
+    },
+    "progress": {
+      "step": "Schritt",
+      "of": "von",
+      "complete": "abgeschlossen"
+    },
+    "passType": {
+      "title": "Was möchten Sie erstellen",
+      "livePreview": "Live-Vorschau",
+      "campaignName": {
+        "label": "Kampagnenname",
+        "placeholder": "z.B. Sommerschlussverkauf 2025, Kaffee-Treueprogramm",
+        "helpText": "Dies wird der Haupttitel Ihres Passes sein"
+      },
+      "tiles": {
+        "loyalty": {
+          "title": "Treuekarte",
+          "subtitle": "Belohnen Sie wiederkehrende Kunden mit Stempeln oder Punkten"
+        },
+        "discount": {
+          "title": "Rabattkarte",
+          "subtitle": "Bieten Sie Rabatte und Aktionen an"
+        },
+        "tickets": {
+          "title": "Event-Tickets",
+          "subtitle": "Digitale Tickets für Events und Shows"
+        },
+        "gift": {
+          "title": "Geschenkkarten",
+          "subtitle": "Digitale Geschenkkarten und Gutscheine"
+        },
+        "membership": {
+          "title": "Mitgliedschaft",
+          "subtitle": "Mitgliedskarten und exklusive Pässe"
+        }
+      },
+      "comingSoon": "Demnächst verfügbar"
+    },
+    "branding": {
+      "title": "Machen Sie es zu Ihrem",
+      "livePreview": "Live-Vorschau",
+      "logo": {
+        "label": "Logo",
+        "dropText": "Legen Sie Ihr Logo hier ab oder klicken Sie zum Durchsuchen",
+        "fileTypes": "PNG, JPG oder SVG (max. 2 MB)",
+        "delete": "Löschen",
+        "fileTooLarge": "Datei zu groß. Max. 2 MB"
+      },
+      "brandColor": {
+        "label": "Markenfarbe",
+        "chooseOther": "Andere Farben wählen",
+        "openColorPicker": "Farbauswahl öffnen"
+      },
+      "tagline": {
+        "label": "Optionale Tagline",
+        "placeholder": "Geben Sie Ihre Tagline ein",
+        "helpText": "Eine kurze Beschreibung, die auf dem Pass erscheint"
+      }
+    },
+    "details": {
+      "title": "Treue-Belohnungen einrichten",
+      "livePreview": "Live-Vorschau",
+      "stamps": {
+        "label": "Anzahl der benötigten Stempel",
+        "tip": "6–10 Stempel funktionieren am besten für die meisten Unternehmen"
+      },
+      "reward": {
+        "label": "Belohnungsbeschreibung *",
+        "placeholder": "Belohnungsbeschreibung eingeben"
+      }
+    },
+    "business": {
+      "title": "Geschäftsinformationen",
+      "subtitle": "Diese Informationen werden auf Ihrem Pass für Kundenreferenzen angezeigt.",
+      "livePreview": "Live-Vorschau",
+      "businessName": {
+        "label": "Geschäftsname",
+        "placeholder": "Ihr Geschäftsname"
+      },
+      "businessAddress": {
+        "label": "Geschäftsadresse",
+        "placeholder": "Ihre Geschäftsadresse"
+      },
+      "phoneNumber": {
+        "label": "Telefonnummer",
+        "placeholder": "+10-6789887612"
+      },
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "business@gmail.com"
+      },
+      "website": {
+        "label": "Website",
+        "placeholder": "www.ihregeschäft.de"
+      },
+      "socialMedia": {
+        "label": "Soziale Medien",
+        "placeholder": "@ihr_geschäft"
+      }
+    },
+    "experience": {
+      "title": "Kundenerfahrung",
+      "subtitle": "Passen Sie an, wie Kunden mit Ihrem Pass interagieren",
+      "livePreview": "Live-Vorschau",
+      "welcomeMessage": {
+        "label": "Willkommensnachricht",
+        "placeholder": "Geben Sie eine Willkommensnachricht für Kunden ein...",
+        "helpText": "Diese Nachricht erscheint, wenn Kunden den Pass zum ersten Mal hinzufügen"
+      },
+      "instructions": {
+        "label": "Wie verwende ich Anweisungen?",
+        "placeholder": "Geben Sie Anweisungen zur Verwendung des Passes ein..."
+      },
+      "specialOffers": {
+        "label": "Sonderangebote und Updates",
+        "placeholder": "Geben Sie Sonderangebote und Updates ein..."
+      },
+      "updateFrequency": {
+        "label": "Update-Häufigkeit",
+        "helpText": "Wie oft sollten Kunden Updates zu Angeboten erhalten"
+      }
+    },
+    "distribution": {
+      "title": "Verteilung und Zugang",
+      "subtitle": "Wie Kunden Ihren Pass erhalten und verwenden werden.",
+      "livePreview": "Live-Vorschau",
+      "qrDescription": "Kunden scannen diesen QR-Code, um Ihren Pass zu ihrer Apple Wallet hinzuzufügen",
+      "buttons": {
+        "downloadQR": "QR herunterladen",
+        "copyLink": "Link kopieren",
+        "emailToMe": "An mich senden"
+      },
+      "distributionIdeas": {
+        "title": "Verteilungs-Ideen",
+        "ideas": [
+          "Platzieren Sie den QR-Code an Ihrer Kasse auf dem Tresen",
+          "Drucken Sie auf Quittungen und Geschäftskarten",
+          "Teilen Sie den Link in sozialen Medien",
+          "Fügen Sie ihn in Ihre E-Mail-Signatur ein",
+          "Zeigen Sie ihn auf Ihrer Website an"
+        ]
+      }
+    },
+    "publish": {
+      "title": "Überprüfen und Veröffentlichen",
+      "subtitle": "Überprüfen Sie Ihre Pass-Details vor der Veröffentlichung",
+      "livePreview": "Live-Vorschau",
+      "reviewFields": {
+        "campaign": "Kampagne:",
+        "type": "Typ:",
+        "business": "Geschäft",
+        "contact": "Kontakt",
+        "stampsRequired": "Stempel erforderlich",
+        "reward": "Belohnung"
+      },
+      "whatHappensNext": "Was passiert als nächstes?",
+      "nextSteps": [
+        "Ihr Pass wird generiert und ist bereit zum Teilen",
+        "QR-Codes und Sharing-Links werden erstellt",
+        "Kunden können ihn sofort zu ihrer Apple Wallet hinzufügen",
+        "Sie erhalten Analysen zu Pass-Downloads und -Nutzung"
+      ],
+      "publishButton": "Pass veröffentlichen"
+    }
   },
   "common": {
     "title": "Passly"
@@ -70,7 +245,7 @@
       "done": "Fertig"
     },
     "createNewPassGetStarted": {
-      "heading": "Erstellen Sie in 5 Minuten einen gebrandeten Wallet-Pass",
+      "heading": "Erstellen Sie in 5 Minuten einen gebrandeten <wallet>Wallet</wallet>-<pass>Pass</pass>",
       "description": "Gestalten Sie professionelle Treuekarten, Gutscheine, Event-Tickets und Geschenkkarten, die Kunden zu ihrer Apple Wallet hinzufügen können. Vollständige Einrichtung mit allen erforderlichen Details.",
       "cta": "Loslegen",
       "features": {
@@ -89,12 +264,20 @@
       },
       "card": {
         "campaign": "Ihre Kampagne",
+        "passType": "Ihr Pass-Typ",
         "collect": "Sammeln Sie Stempel für: Kostenlosen Kaffee",
         "stampsNeeded": "6 Stempel benötigt",
         "minPurchase": "Mindestkauf: 45",
         "business": "Wendly's Eisdiele",
         "phone": "9861375868",
         "add": "Zu Apple Wallet hinzufügen"
+      },
+      "popup": {
+        "title": "Mit vorhandenen Daten fortfahren?",
+        "description": "Wir haben einige zuvor gespeicherte Daten gefunden. Möchten Sie dort weitermachen, wo Sie aufgehört haben, oder neu beginnen?",
+        "continueExisting": "Mit vorhandenen Daten fortfahren",
+        "startFresh": "Neu beginnen",
+        "cancel": "Abbrechen"
       }
     }
   },

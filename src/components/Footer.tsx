@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { getTranslations, type Locale } from '@/lib/translations';
 
 
@@ -11,31 +12,37 @@ const Footer = ({ locale }: FooterProps) => {
 
   return (
     <>
+
+<div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-[500px]">
+  
+</div>
+
+
+    {/* Footer */}
       <footer
-        className="relative text-white bg-contain bg-no-repeat bg-center"
+        className="relative text-white bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: "linear-gradient(to bottom, #00000000, #00000000, #00000000, black, black), url('/footer-bg.jpg')"
         }}
       >
-        <div className="relative py-8 sm:py-10 md:py-12 mb-50">
+
+
+        {/* <div className="relative py-8 sm:py-10 md:py-12 mb-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative">
-            {/* Single Green Card Behind Wallet */}
+           
             <div className="absolute -top-15 right-25 z-0 hidden md:block">
               <div className="w-[500px] h-30 bg-lime-400 transform rotate-7 shadow-md"></div>
             </div>
-            {/* Dark Green Card Behind Wallet */}
+         
             <div className="absolute -top-9 right-25 z-1 hidden md:block">
               <div className="w-[540px] h-28 bg-green-700 transform rotate-5 shadow-md"></div>
             </div>
-            {/* Wallet Shape */}
             <div className="bg-black rounded-4xl p-6 sm:p-8 md:p-10 relative w-[650px] min-h-[450px] z-10">
-              {/* Wallet Flap */}
               <div className="absolute top-18 right-0 h-full flex items-start">
                 <div className="w-24 h-18 bg-white rounded-l-full flex items-center pl-2">
                   <div className="w-12 h-12 bg-green-700 rounded-full"></div>
                 </div>
               </div>
-              {/* Wallet Content */}
               <div className="relative z-10 flex flex-col items-center text-center mt-6 sm:mt-8 md:mt-10">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-5">
                   {t.footerCTA?.headline || 'Tap In. Stand Out. Join Us'}
@@ -59,7 +66,10 @@ const Footer = ({ locale }: FooterProps) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+
+
+
         {/* Footer Content */}
         <div className="relative z-10 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -70,16 +80,16 @@ const Footer = ({ locale }: FooterProps) => {
                 {/* Logo/Icon */}
                 <div className="flex items-center space-x-3">
                   <img src="/passly_logo.svg" alt="Passly Logo" className="w-12 h-10" />
-                  <span className="text-2xl sm:text-3xl font-bold text-white">Passly</span>
+                  <span className="text-2xl sm:text-3xl font-bold text-black lg:text-white">Passly</span>
                 </div>
                 
                 {/* Tagline */}
-                <p className="text-gray-300 text-lg sm:text-xl max-w-md">
+                <p className="text-black lg:text-white text-lg sm:text-xl max-w-md">
                   {t.footer?.tagline || 'The Future of Wallet Engagement.'}
                 </p>
                 
                 {/* Copyright */}
-                <p className="text-gray-400 text-sm sm:text-base">
+                <p className="text-black lg:text-white text-sm sm:text-base">
                   {t.footer?.copyright || '© 2025 Passly. All rights Reserved'}
                 </p>
               </div>
@@ -88,19 +98,19 @@ const Footer = ({ locale }: FooterProps) => {
               <div className="space-y-8">
                 {/* Primary Navigation Links */}
                 <div className="flex flex-wrap gap-6 sm:gap-8">
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
                     {t.footer?.navigation?.home || 'Home'}
                   </a>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
                     {t.footer?.navigation?.product || 'Product'}
                   </a>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
                     {t.footer?.navigation?.pricing || 'Pricing'}
                   </a>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
                     {t.footer?.navigation?.blog || 'Blog'}
                   </a>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
                     {t.footer?.navigation?.contact || 'Contact'}
                   </a>
                 </div>

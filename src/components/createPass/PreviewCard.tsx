@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import type { RootState } from '@/store';
 
 type PreviewCardProps = {
@@ -49,11 +50,9 @@ export default function PreviewCard({
   const resolvedLogoUrl = previewCardData.logoUrl;
   const resolvedTagline = previewCardData.tagline;
 
-  // Log resolvedLogoUrl
-  console.log('Resolved logo URL:', previewCardData);
 
   return (
-    <div className="rounded-[12px] shadow-[0_15px_35px_-10px_rgba(0,0,0,0.2)] border border-gray-200 overflow-hidden max-w-[520px] bg-white">
+    <div className="rounded-[12px] shadow-[0_15px_35px_-10px_rgba(0,0,0,0.2)] border border-gray-200 overflow-hidden max-w-[400px] w-full bg-white">
       {/* Header */}
       <div className="px-5 py-4" style={{ backgroundColor: resolvedHeader }}>
         <div className="flex items-start gap-3 text-white">

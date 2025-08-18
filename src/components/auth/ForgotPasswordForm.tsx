@@ -1,7 +1,8 @@
 "use client";
 
-import React from 'react';
 import { usePathname } from 'next/navigation';
+import React from 'react';
+
 import { getTranslations, type Locale } from '@/lib/translations';
 
 type ForgotPasswordFormProps = {

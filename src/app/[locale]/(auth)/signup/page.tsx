@@ -1,11 +1,12 @@
 "use client";
 
+import React from 'react';
+
 import AuthTwoColumn from '@/components/auth/AuthTwoColumn';
 import SignupForm from '@/components/auth/SignupForm';
 import SignupPasswordForm from '@/components/auth/SignupPasswordForm';
 import SignupSuccess from '@/components/auth/SignupSuccess';
 import { type Locale } from '@/lib/translations';
-import React from 'react';
 
 export default function SignupPage({
   params,

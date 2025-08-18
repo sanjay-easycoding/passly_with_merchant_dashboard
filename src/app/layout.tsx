@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+
 import Providers from '@/components/Providers';
 
 import type { Metadata } from "next";
@@ -9,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Passly - Password Manager",
-  description: "Secure password management with multi-language support",
+  title: "Passly - Digital Wallet",
+  description: "Passly is a digital wallet that allows you to store your digital assets in one place.",
 };
 
 export default function RootLayout({

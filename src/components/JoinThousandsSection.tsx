@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { getTranslations, type Locale } from '@/lib/translations';
 
 interface JoinThousandsSectionProps {

@@ -28,20 +28,20 @@ export const initialState: BuilderState = {
   brandColor: '#7123a9',
   logoUrl: null,
   type: 'loyalty',
-  rewardDescription: 'Free Coffee',
+  rewardDescription: '',
   stampsNeeded: 5,
   minPurchase: 700,
-  businessName: 'Your Business',
-  contact: '+10-6789887612',
+  businessName: '',
+  contact: '',
   offersFrequency: 'Monthly',
-  tagline: 'Join our loyalty program today!',
-  businessAddress: '123 Main St, Anytown, USA',
-  email: 'info@example.com',
-  website: 'www.example.com',
-  socialMedia: 'facebook.com/example, twitter.com/example',
-  welcomeMessage: 'Welcome to our loyalty program!',
-  instructions: 'Collect stamps to earn rewards.',
-  specialOffers: 'Check out our exclusive offers!',
+  tagline: '',
+  businessAddress: '',
+  email: '',
+  website: '',
+  socialMedia: '',
+  welcomeMessage: '',
+  instructions: '',
+  specialOffers: '',
 };
 
 const builderSlice = createSlice({
@@ -105,6 +105,9 @@ const builderSlice = createSlice({
     setSpecialOffers(state, action: PayloadAction<string>) {
       state.specialOffers = action.payload;
     },
+    clearBuilderData(state) {
+      Object.assign(state, initialState);
+    },
   },
 });
 
@@ -128,6 +131,7 @@ export const {
   setWelcomeMessage,
   setInstructions,
   setSpecialOffers,
+  clearBuilderData,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

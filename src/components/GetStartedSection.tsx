@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { getTranslations, type Locale } from '@/lib/translations';
 
 interface GetStartedSectionProps {
@@ -44,8 +45,11 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
         {/* Bento Box Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           {/* Area 1 - Large Card */}
-          <div className="sm:col-span-2 lg:col-span-2 lg:row-span-2 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-            <div className="p-4 sm:p-6 md:p-8 h-full bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col justify-between">
+          <div style={{ boxShadow: '0px 4px 4.5px 2px #00000047' }} className="sm:col-span-2 lg:col-span-2 lg:row-span-2 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+           
+           
+           
+            <div className="p-4 sm:p-6 md:p-8 h-full flex flex-col justify-between">
               <div>
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
                   {locale === 'de' ? 'Kunde scannt. Karte gespeichert' : 'Customer Scans. Card Saved'}
@@ -57,50 +61,33 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
                   }
                 </p>
                 
-                {/* Illustration */}
-                <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden">
-                  {/* Woman with phone */}
-                  <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 w-12 h-16 sm:w-16 sm:h-20">
-                    <div className="w-10 h-14 sm:w-14 sm:h-18 bg-yellow-400 rounded-full relative">
-                      <div className="absolute -top-0.5 left-0.5 sm:-top-1 sm:left-1 w-5 h-5 sm:w-8 sm:h-8 bg-white rounded-full"></div>
-                      <div className="absolute top-1 sm:top-2 left-1 sm:left-2 w-2.5 h-2.5 sm:w-4 sm:h-4 bg-black rounded-full"></div>
-                      <div className="absolute top-2 sm:top-3 left-2 sm:left-3 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full"></div>
-                    </div>
-                    <div className="absolute -top-0.5 sm:-top-1 left-4 sm:left-8 w-5 h-6 sm:w-6 sm:h-8 bg-pink-400 rounded-full"></div>
-                  </div>
-                  
-                  {/* Phone */}
-                  <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 w-6 h-10 sm:w-8 sm:h-12 md:w-10 md:h-14 bg-blue-600 rounded-lg">
-                    <div className="w-5 h-8 sm:w-6 sm:h-10 md:w-8 md:h-12 bg-blue-700 rounded-sm mx-0.5 sm:mx-1 mt-0.5 sm:mt-1"></div>
-                  </div>
-                  
-                  {/* Digital Card */}
-                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4 w-12 h-8 sm:w-16 sm:h-10 md:w-18 md:h-12 bg-white/90 rounded-lg shadow-md border border-gray-200">
-                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-blue-500 rounded-sm absolute top-0.5 sm:top-1 left-0.5 sm:left-1"></div>
-                    <div className="text-xs sm:text-sm text-gray-600 absolute bottom-0.5 sm:bottom-1 left-0.5 sm:left-1">Apple Wallet</div>
-                  </div>
-                  
-                  {/* Floating particles */}
-                  <div className="absolute top-1 sm:top-2 left-2 sm:left-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full"></div>
-                  <div className="absolute top-2 sm:top-3 right-1 sm:right-2 w-1 h-1 bg-pink-400 rounded-full"></div>
-                  <div className="absolute top-4 sm:top-6 left-3 sm:left-6 w-1 h-1 bg-blue-400 rounded-full"></div>
+                <div className="flex justify-center mb-4 sm:mb-6">
+                  <img 
+                    src="/getStartedPhone.png" 
+                    alt="Phone with QR code" 
+                    className="w-32 sm:w-40 md:w-48 h-96"
+                  />
                 </div>
+
               </div>
               
               <div className="flex flex-wrap gap-2 mt-4 sm:mt-6">
-                <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-100 text-blue-700 text-xs sm:text-sm rounded-full border border-blue-200">
-                  {locale === 'de' ? 'Keine App erforderlich' : 'No App Required'}
+                <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-600 text-white text-xs sm:text-sm rounded-full font-medium">
+                  {locale === 'de' ? 'Keine App erforderlich' : 'No app required'}
                 </div>
-                <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-100 text-green-700 text-xs sm:text-sm rounded-full border border-green-200">
-                  {locale === 'de' ? 'Sofort speichern' : 'Instant Save'}
+                <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-800 text-white text-xs sm:text-sm rounded-full font-medium">
+                  {locale === 'de' ? 'Sofort speichern' : 'Instant save'}
                 </div>
               </div>
             </div>
+
+
+
           </div>
 
           {/* Area 2 - Medium Card */}
-          <div className="sm:col-span-2 lg:col-span-2 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-            <div className="p-4 sm:p-6 h-48 sm:h-56 md:h-64 bg-gradient-to-br from-purple-50 to-pink-50 relative overflow-hidden">
+          <div style={{ boxShadow: '0px 4px 4.5px 2px #00000047' }} className="sm:col-span-2 lg:col-span-2 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="p-4 sm:p-6 sm:h-56 md:h-64 relative overflow-hidden h-full">
               <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                 {locale === 'de' ? 'Machen Sie es einzigartig' : 'Make It Uniquely Yours'}
               </h3>
@@ -112,31 +99,25 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
               </p>
               
               {/* UI Interface */}
-              <div className="relative">
-                {/* Tabs */}
-                <div className="flex gap-1 sm:gap-2 mb-3 sm:mb-4">
-                  <div className="w-10 h-5 sm:w-12 sm:h-6 bg-blue-500 rounded text-xs text-white flex items-center justify-center">
-                    Logo
-                  </div>
-                  <div className="w-10 h-5 sm:w-12 sm:h-6 bg-gray-300 rounded text-xs text-gray-600 flex items-center justify-center">
-                    Color
-                  </div>
-                  <div className="w-10 h-5 sm:w-12 sm:h-6 bg-gray-300 rounded text-xs text-gray-600 flex items-center justify-center">
-                    Card
-                  </div>
-                </div>
-                
-                {/* Preview Card */}
-                <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 w-10 h-6 sm:w-12 sm:h-8 md:w-14 md:h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-md border border-gray-200">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-white rounded-full absolute top-0.5 sm:top-1 right-0.5 sm:right-1 opacity-80"></div>
+              <div >
+           
+              <div className="flex justify-end mb-4 sm:mb-6">
+                  <img 
+                    src="/getStartedMonitor.jpg" 
+                    alt="Card customization interface" 
+                    className="w-[100px] h-[100px]"
+                  />
                 </div>
               </div>
+
+
+              
             </div>
           </div>
 
           {/* Area 3 - Small Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-            <div className="p-4 sm:p-6 h-48 sm:h-56 md:h-64 bg-gradient-to-br from-green-50 to-blue-50 overflow-hidden">
+          <div style={{ boxShadow: '0px 4px 4.5px 2px #00000047' }} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="p-4 sm:p-6 h-full overflow-hidden">
               <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                 {locale === 'de' ? 'Wählen Sie den perfekten Pass' : 'Pick the Perfect Pass'}
               </h3>
@@ -169,8 +150,8 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
           </div>
 
           {/* Area 4 - Small Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-            <div className="p-4 sm:p-6 h-48 sm:h-56 md:h-64 bg-gradient-to-br from-orange-50 to-red-50 relative overflow-hidden">
+          <div style={{ boxShadow: '0px 4px 4.5px 2px #00000047' }} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="p-4 sm:p-6 h-full relative overflow-hidden">
               <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-3">
                 {locale === 'de' ? 'Funktioniert ohne App' : 'Works Without an App'}
               </h3>
@@ -209,6 +190,8 @@ const GetStartedSection = ({ locale }: GetStartedSectionProps) => {
             </div>
           </div>
         </div>
+
+        
       </div>
     </>
   );

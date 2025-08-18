@@ -1,4 +1,5 @@
 import Steps from '@/components/createPass/Steps';
+
 import type { Locale } from '@/lib/translations';
 
 export default function CreatePassBuilderLayout({

@@ -1,11 +1,14 @@
 "use client";
 import React from 'react';
-import type { Locale } from '@/lib/translations';
-import StepNav from '@/components/createPass/StepNav';
-import PreviewCard from '@/components/createPass/PreviewCard';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslations } from '@/lib/translations';
+
+import PreviewCard from '@/components/createPass/PreviewCard';
+import StepNav from '@/components/createPass/StepNav';
 import { RootState } from '@/store';
 import { setLogoUrl, setBrandColor, setTagline } from '@/store/builderSlice';
+
+import type { Locale } from '@/lib/translations';
 
 const palette = [
   '#F5A9B8', '#000000', '#F44336', '#FFEB3B', '#10E7B3', '#98CAE3',
@@ -25,6 +28,9 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
 
   // Retrieve logo URL from Redux
   const logoUrl = useSelector((state: RootState) => state.builder.logoUrl);
+
+  // Get translations
+  const t = useTranslations(params.locale, 'builder');
 
   // Initialize localLogoUrl from Redux state
   React.useEffect(() => {
@@ -61,12 +67,12 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
   return (
     <>
       {/* Left column: branding form */}
-      <div className="bg-white rounded-xl shadow border border-gray-200 p-6">
-        <h2 className="text-[28px] font-semibold mb-6">Make it Yours</h2>
+      <div className="bg-white rounded-xl border border-gray-200 p-8" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
+        <h2 className="text-2xl font-semibold mb-12 text-center">{t.branding.title}</h2>
 
         {/* Logo uploader */}
         <div className="mb-8">
-          <label className="block text-[16px] font-semibold text-gray-900 mb-2">Logo</label>
+          <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.branding.logo.label}</label>
           <div
             className="border-2 border-dashed border-gray-300 rounded-xl text-center text-gray-600 cursor-pointer hover:bg-gray-50 flex items-center justify-center h-48"
             onClick={() => fileRef.current?.click()}
@@ -74,8 +80,8 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
             {!localLogoUrl ? (
               <div>
                 <div className="text-3xl mb-2">↑</div>
-                <div>Drop your Logo here or Click to browse</div>
-                <div className="mt-2 text-sm">PNG, JPG or SVG (max 2 MB)</div>
+                <div>{t.branding.logo.dropText}</div>
+                <div className="mt-2 text-sm">{t.branding.logo.fileTypes}</div>
               </div>
             ) : (
               <img src={localLogoUrl} alt="Logo preview" className="max-h-full max-w-full object-contain" />
@@ -90,7 +96,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
               const file = e.target.files?.[0];
               if (!file) return;
               if (file.size > 2 * 1024 * 1024) {
-                setLogoError('File too large. Max 2 MB');
+                setLogoError(t.branding.logo.fileTooLarge);
                 setLocalLogoUrl(null);
                 return;
               }
@@ -117,7 +123,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
                   dispatch(setLogoUrl(null));
                 }}
               >
-                Delete
+                {t.branding.logo.delete}
               </button>
             </div>
           ) : null}
@@ -125,37 +131,37 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
 
         {/* Brand Color */}
         <div className="mb-8">
-          <label className="block text-[16px] font-semibold text-gray-900 mb-3">Brand Color</label>
-          <div className="grid grid-cols-6 gap-4 mb-4">
+          <label className="block text-[16px] font-semibold text-gray-900 mb-3">{t.branding.brandColor.label}</label>
+          <div className="grid grid-cols-6 gap-4 my-8">
             {palette.map((c) => (
               <button
                 key={c}
                 type="button"
                 onClick={() => { setSelectedColor(c); setHex(c); dispatch(setBrandColor(c)); }}
-                className="w-16 h-14 rounded-lg border shadow-sm"
+                className="w-11 h-11 rounded-lg shadow-sm"
                 style={{ backgroundColor: c }}
                 aria-label={`select ${c}`}
               />
             ))}
           </div>
 
-          <div className="mb-3">
+          <div className="mb-5">
             <button
               type="button"
               onClick={() => colorRef.current?.click()}
               className="w-full rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-50 px-4 py-3 text-center"
             >
-              Choose other colors
+              {t.branding.brandColor.chooseOther}
             </button>
             <input ref={colorRef} type="color" value={hex} onChange={(e) => { handleChoose(e); try { const prev = JSON.parse(localStorage.getItem('passly_builder') || '{}'); localStorage.setItem('passly_builder', JSON.stringify({ ...prev, brandColor: e.target.value })); } catch {} }} className="hidden" />
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 my-5">
             <div
-              className="w-12 h-12 rounded-full border cursor-pointer"
+              className="w-10 h-10 rounded-full border cursor-pointer"
               style={{ backgroundColor: selectedColor }}
               onClick={() => colorRef.current?.click()}
-              title="Open color picker"
+              title={t.branding.brandColor.openColorPicker}
             />
             <input
               value={hex}
@@ -163,29 +169,27 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
               onBlur={applyHex}
               onClick={() => colorRef.current?.click()}
               className="rounded-lg border border-gray-300 px-3 py-2 w-64 cursor-pointer"
-              title="Open color picker"
+              title={t.branding.brandColor.openColorPicker}
             />
           </div>
         </div>
 
         {/* Optional Tagline */}
         <div className="mb-2">
-          <label className="block text-[16px] font-semibold text-gray-900 mb-2">Optional Tagline</label>
+          <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.branding.tagline.label}</label>
           <input
             className="w-full rounded-xl border border-gray-300 px-4 py-3"
-            placeholder="Enter your tagline"
+            placeholder={t.branding.tagline.placeholder}
             value={tagline}
             onChange={(e) => { setTagline(e.target.value); dispatch(setTagline(e.target.value)); }}
           />
-          <p className="text-sm text-gray-500 mt-2">A short description that appears on the pass</p>
+          <p className="text-sm text-gray-500 mt-2">{t.branding.tagline.helpText}</p>
         </div>
-
-
       </div>
 
       {/* Right column: preview */}
-      <div className="bg-white rounded-xl shadow border border-gray-200 p-6">
-        <h2 className="text-2xl font-bold mb-6">Live Preview</h2>
+      <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
+        <h2 className="text-2xl font-semibold mb-12 text-center">{t.branding.livePreview}</h2>
         <PreviewCard headerColor={selectedColor} title={campaignName || 'Your Campaign'} logoUrl={logoUrl} />
       </div>
 

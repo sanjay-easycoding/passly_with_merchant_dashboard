@@ -4,7 +4,182 @@
     "createNewPass": "Create New Pass",
     "settings": "Settings",
     "getStarted": "Get Started",
-    "login": "Login"
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "builder": {
+    "steps": {
+      "passType": "Pass Type",
+      "branding": "Branding",
+      "details": "Details",
+      "business": "Business",
+      "experience": "Experience",
+      "distribution": "Distribution",
+      "publish": "Publish"
+    },
+    "progress": {
+      "step": "Step",
+      "of": "of",
+      "complete": "complete"
+    },
+    "passType": {
+      "title": "What will you create",
+      "livePreview": "Live Preview",
+      "campaignName": {
+        "label": "Campaign Name",
+        "placeholder": "e.g., Summer Sale 2025, Coffee Loyalty Program",
+        "helpText": "This will be the main title of your pass"
+      },
+      "tiles": {
+        "loyalty": {
+          "title": "Loyalty Card",
+          "subtitle": "Rewards repeat customers with stamps or points"
+        },
+        "discount": {
+          "title": "Discount Card",
+          "subtitle": "Offer Discount and Promotions"
+        },
+        "tickets": {
+          "title": "Event Tickets",
+          "subtitle": "Digital tickets for Events and Shows"
+        },
+        "gift": {
+          "title": "Gift Cards",
+          "subtitle": "Digital Gift Cards and Vouchers"
+        },
+        "membership": {
+          "title": "Membership",
+          "subtitle": "Membership Cards and exclusive passes"
+        }
+      },
+      "comingSoon": "Coming Soon"
+    },
+    "branding": {
+      "title": "Make it Yours",
+      "livePreview": "Live Preview",
+      "logo": {
+        "label": "Logo",
+        "dropText": "Drop your Logo here or Click to browse",
+        "fileTypes": "PNG, JPG or SVG (max 2 MB)",
+        "delete": "Delete",
+        "fileTooLarge": "File too large. Max 2 MB"
+      },
+      "brandColor": {
+        "label": "Brand Color",
+        "chooseOther": "Choose other colors",
+        "openColorPicker": "Open color picker"
+      },
+      "tagline": {
+        "label": "Optional Tagline",
+        "placeholder": "Enter your tagline",
+        "helpText": "A short description that appears on the pass"
+      }
+    },
+    "details": {
+      "title": "Set up Loyalty Rewards",
+      "livePreview": "Live Preview",
+      "stamps": {
+        "label": "Number of stamps required",
+        "tip": "6–10 stamps works best for most businesses"
+      },
+      "reward": {
+        "label": "Reward description *",
+        "placeholder": "Enter reward description"
+      }
+    },
+    "business": {
+      "title": "Business Information",
+      "subtitle": "This information will appear on your pass for customer reference.",
+      "livePreview": "Live Preview",
+      "businessName": {
+        "label": "Business Name",
+        "placeholder": "Your Business Name"
+      },
+      "businessAddress": {
+        "label": "Business Address",
+        "placeholder": "Your Business Address"
+      },
+      "phoneNumber": {
+        "label": "Phone Number",
+        "placeholder": "+10-6789887612"
+      },
+      "email": {
+        "label": "e-mail address",
+        "placeholder": "business@gmail.com"
+      },
+      "website": {
+        "label": "Website",
+        "placeholder": "www.yourbusiness.com"
+      },
+      "socialMedia": {
+        "label": "Social Media",
+        "placeholder": "@your_business"
+      }
+    },
+    "experience": {
+      "title": "Customer Experience",
+      "subtitle": "Customize how customers interact with your pass",
+      "livePreview": "Live Preview",
+      "welcomeMessage": {
+        "label": "Welcome Message",
+        "placeholder": "Enter welcome message for customers...",
+        "helpText": "This message appears when Customers first add the pass"
+      },
+      "instructions": {
+        "label": "How to use Instructions?",
+        "placeholder": "Enter instructions for using the pass..."
+      },
+      "specialOffers": {
+        "label": "Special offers and updates",
+        "placeholder": "Enter special offers and updates..."
+      },
+      "updateFrequency": {
+        "label": "Update frequency",
+        "helpText": "How often should customers receive updates about offers"
+      }
+    },
+    "distribution": {
+      "title": "Distribution and access",
+      "subtitle": "How Customers will get and use your pass.",
+      "livePreview": "Live Preview",
+      "qrDescription": "Customers scan this qr code to add your pass to their apple wallet",
+      "buttons": {
+        "downloadQR": "Download QR",
+        "copyLink": "Copy link",
+        "emailToMe": "Email to me"
+      },
+      "distributionIdeas": {
+        "title": "Distribution Ideas",
+        "ideas": [
+          "Place qr code at your register on Counter",
+          "Print on receipts on Business cards",
+          "Share Link on Social media",
+          "Include in email signature",
+          "Display on your Website"
+        ]
+      }
+    },
+    "publish": {
+      "title": "Review and Publish",
+      "subtitle": "Review your pass details before publishing",
+      "livePreview": "Live Preview",
+      "reviewFields": {
+        "campaign": "Campaign:",
+        "type": "Type:",
+        "business": "Business",
+        "contact": "Contact",
+        "stampsRequired": "Stamps Required",
+        "reward": "Reward"
+      },
+      "whatHappensNext": "What happens Next ?",
+      "nextSteps": [
+        "Your pass will be generated and ready to share",
+        "QR codes and sharing links will be created",
+        "Customers can add it to their apple wallet instantly",
+        "You will get analytics on pass downloads and usage"
+      ],
+      "publishButton": "Publish Pass"
+    }
   },
   "common": {
     "title": "Passly"
@@ -70,7 +245,7 @@
       "done": "Done"
     },
     "createNewPassGetStarted": {
-      "heading": "Create a Branded Wallet Pass in 5 Minutes",
+      "heading": "Create a Branded <wallet>Wallet</wallet> <pass>Pass</pass> in 5 Minutes",
       "description": "Design professional loyalty cards, coupons, event tickets, and gift cards that customers can add to their Apple Wallet. Complete setup with all required details.",
       "cta": "Get Started",
       "features": {
@@ -89,12 +264,20 @@
       },
       "card": {
         "campaign": "Your Campaign",
+        "passType": "Your Pass Type",
         "collect": "Collect stamps for: Free coffee",
         "stampsNeeded": "6 stamps needed",
         "minPurchase": "Min purchase: 45",
         "business": "Wendly's Icecream",
         "phone": "9861375868",
         "add": "Add to apple wallet"
+      },
+      "popup": {
+        "title": "Continue with existing data?",
+        "description": "We found some previously saved data. Would you like to continue where you left off or start fresh?",
+        "continueExisting": "Continue with existing data",
+        "startFresh": "Start fresh",
+        "cancel": "Cancel"
       }
     }
   },

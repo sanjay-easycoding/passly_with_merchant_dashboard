@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 // Type the children prop
 const CreateNewPassLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {

@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import builderReducer from './builderSlice';
+
 import { builderApi } from '@/services/builderApi';
+
+import builderReducer from './builderSlice';
 
 // Add persistence logic
 function saveToLocalStorage(state: RootState) {

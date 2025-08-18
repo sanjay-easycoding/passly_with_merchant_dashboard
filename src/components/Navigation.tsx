@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import React, { useState, useEffect, useRef } from 'react';
+
 import { getTranslations, type Locale } from '@/lib/translations';
 
 // Remove duplicate Create New Pass link
@@ -203,7 +204,7 @@ const Navigation = ({ locale }: NavigationProps) => {
                 }}
                 className="px-6 py-2 rounded-lg font-medium transition-all duration-200 border border-gray-300 text-gray-800 hover:bg-gray-50 hover:border-blue-500"
               >
-                Logout
+                {t.navigation.logout}
               </button>
             )}
           </div>
@@ -299,6 +300,17 @@ const Navigation = ({ locale }: NavigationProps) => {
               {t.navigation[item.name as keyof typeof t.navigation]}
             </Link>
           ))}
+          
+          {/* Create New Pass link for mobile */}
+          <button
+            onClick={() => {
+              handleCreateNewPassClick();
+              handleMobileNavClick();
+            }}
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+          >
+            {t.navigation.createNewPass}
+          </button>
           
           {/* Mobile Action Buttons */}
           <div className="pt-4 pb-3 border-t border-gray-200">

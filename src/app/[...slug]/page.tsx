@@ -1,6 +1,6 @@
-import { getTranslations, type Locale } from '@/lib/translations';
-import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
+import Navigation from '@/components/Navigation';
+import { getTranslations, type Locale } from '@/lib/translations';
 
 export default function SlugPage({
   params,

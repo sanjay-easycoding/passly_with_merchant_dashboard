@@ -1,11 +1,12 @@
 "use client";
 
+import React from 'react';
+
 import AuthTwoColumn from '@/components/auth/AuthTwoColumn';
 import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm';
-import OtpVerificationForm from '@/components/auth/OtpVerificationForm';
 import ForgotPasswordSuccess from '@/components/auth/ForgotPasswordSuccess';
+import OtpVerificationForm from '@/components/auth/OtpVerificationForm';
 import { type Locale } from '@/lib/translations';
-import React from 'react';
 
 export default function ForgotPasswordPage({
   params,
