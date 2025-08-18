@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { getTranslations, type Locale } from '@/lib/translations';
 
+// Remove duplicate Create New Pass link
 const navItems = [
   { name: 'dashboard', href: 'dashboard' },
-  { name: 'createNewPass', href: 'create-pass' },
+
   { name: 'settings', href: 'settings' }
 ];
 
@@ -81,16 +82,31 @@ const Navigation = ({ locale }: NavigationProps) => {
     setIsMobileMenuOpen(false);
   };
 
+  // Add authentication check for Create New Pass link
+  const handleCreateNewPassClick = () => {
+    const isLoggedIn = typeof window !== 'undefined' && !!localStorage.getItem('passly_auth');
+    if (isLoggedIn) {
+      window.location.href = `/${locale}/create-new-pass/get-started`;
+    } else {
+      window.location.href = `/${locale}/login`;
+    }
+  };
+
+  const isLoggedIn = typeof window !== 'undefined' && !!localStorage.getItem('passly_auth');
+
   return (
     <nav className="relative bg-white">
       <div className="max-w-7xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex items-center gap-2">
-            <img src="/passly_logo.svg" alt="Passly Logo" className="w-10 h-10 block mb-[18px] mr-[5px]" />
-            <div className="text-xl sm:text-2xl font-bold text-black">
-              {t.common.title}
-            </div>
+            {/* Wrap both logo and text in Link */}
+            <Link href={`/${locale}/`} className="flex items-center gap-2">
+              <img src="/passly_logo.svg" alt="Passly Logo" className="w-10 h-10 block mb-[18px] mr-[5px] cursor-pointer" />
+              <div className="text-xl sm:text-2xl font-bold text-black cursor-pointer">
+                {t.common.title}
+              </div>
+            </Link>
           </div>
           
           {/* Desktop Navigation Links */}
@@ -106,6 +122,17 @@ const Navigation = ({ locale }: NavigationProps) => {
                 </Link>
               </div>
             ))}
+            {/* Update Create New Pass link */}
+            <div key="createNewPass">
+              <Link
+                href="#"
+                onClick={handleCreateNewPassClick}
+                className="text-black hover:text-gray-600 transition-colors relative group"
+              >
+                {t.navigation.createNewPass}
+                <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+              </Link>
+            </div>
           </div>
           
           {/* Desktop Navigation Buttons and Language Dropdown */}
@@ -154,19 +181,31 @@ const Navigation = ({ locale }: NavigationProps) => {
               )}
             </div>
             
-            {navButtons.map((button) => (
-              <Link
-                key={button.name}
-                href={getNavLink('login')}
-                className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
-                  button.variant === "primary" 
-                    ? "bg-black text-white hover:bg-gray-800"
-                    : "border border-gray-300 text-gray-800 hover:bg-gray-50 hover:border-blue-500"
-                }`}
+            {!isLoggedIn ? (
+              navButtons.map((button) => (
+                <Link
+                  key={button.name}
+                  href={getNavLink('login')}
+                  className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    button.variant === "primary" 
+                      ? "bg-black text-white hover:bg-gray-800"
+                      : "border border-gray-300 text-gray-800 hover:bg-gray-50 hover:border-blue-500"
+                  }`}
+                >
+                  {t.navigation[button.name as keyof typeof t.navigation]}
+                </Link>
+              ))
+            ) : (
+              <button
+                onClick={() => {
+                  localStorage.removeItem('passly_auth');
+                  window.location.href = `/${locale}/`;
+                }}
+                className="px-6 py-2 rounded-lg font-medium transition-all duration-200 border border-gray-300 text-gray-800 hover:bg-gray-50 hover:border-blue-500"
               >
-                {t.navigation[button.name as keyof typeof t.navigation]}
-              </Link>
-            ))}
+                Logout
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}

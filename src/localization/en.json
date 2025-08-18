@@ -68,6 +68,34 @@
       "heading": "Account Creation Successful",
       "message": "supporting subtext",
       "done": "Done"
+    },
+    "createNewPassGetStarted": {
+      "heading": "Create a Branded Wallet Pass in 5 Minutes",
+      "description": "Design professional loyalty cards, coupons, event tickets, and gift cards that customers can add to their Apple Wallet. Complete setup with all required details.",
+      "cta": "Get Started",
+      "features": {
+        "completeSetup": {
+          "title": "Complete Setup",
+          "desc": "All required fields and business details for professional passes"
+        },
+        "instantDistribution": {
+          "title": "Instant Distribution",
+          "desc": "Generate QR codes and links for easy customer access"
+        },
+        "fullBranding": {
+          "title": "Full Branding",
+          "desc": "Customize everything to match your brand perfectly"
+        }
+      },
+      "card": {
+        "campaign": "Your Campaign",
+        "collect": "Collect stamps for: Free coffee",
+        "stampsNeeded": "6 stamps needed",
+        "minPurchase": "Min purchase: 45",
+        "business": "Wendly's Icecream",
+        "phone": "9861375868",
+        "add": "Add to apple wallet"
+      }
     }
   },
   "joinThousands": {

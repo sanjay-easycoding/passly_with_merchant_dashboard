@@ -68,6 +68,34 @@
       "heading": "Konto erfolgreich erstellt",
       "message": "zusätzlicher Hinweis",
       "done": "Fertig"
+    },
+    "createNewPassGetStarted": {
+      "heading": "Erstellen Sie in 5 Minuten einen gebrandeten Wallet-Pass",
+      "description": "Gestalten Sie professionelle Treuekarten, Gutscheine, Event-Tickets und Geschenkkarten, die Kunden zu ihrer Apple Wallet hinzufügen können. Vollständige Einrichtung mit allen erforderlichen Details.",
+      "cta": "Loslegen",
+      "features": {
+        "completeSetup": {
+          "title": "Vollständige Einrichtung",
+          "desc": "Alle erforderlichen Felder und Geschäftsdetails für professionelle Pässe"
+        },
+        "instantDistribution": {
+          "title": "Sofortige Verteilung",
+          "desc": "Generieren Sie QR-Codes und Links für einfachen Kundenzugang"
+        },
+        "fullBranding": {
+          "title": "Vollständiges Branding",
+          "desc": "Passen Sie alles perfekt an Ihre Marke an"
+        }
+      },
+      "card": {
+        "campaign": "Ihre Kampagne",
+        "collect": "Sammeln Sie Stempel für: Kostenlosen Kaffee",
+        "stampsNeeded": "6 Stempel benötigt",
+        "minPurchase": "Mindestkauf: 45",
+        "business": "Wendly's Eisdiele",
+        "phone": "9861375868",
+        "add": "Zu Apple Wallet hinzufügen"
+      }
     }
   },
   "joinThousands": {

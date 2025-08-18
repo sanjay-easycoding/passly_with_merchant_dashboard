@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { getTranslations, type Locale } from '@/lib/translations';
 
@@ -16,7 +16,9 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [touched, setTouched] = React.useState<{ email?: boolean; password?: boolean }>({});
   const [errors, setErrors] = React.useState<{ email?: string; password?: string }>({});
+  const [loginError, setLoginError] = React.useState<string | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
   const detectedLocale: Locale = pathname?.startsWith('/en') ? 'en' : 'de';
   const t = getTranslations(detectedLocale);
   const title = t?.pages?.login?.title ?? 'Enter Portal';
@@ -44,7 +46,24 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       }
       setErrors(validationErrors);
       if (Object.keys(validationErrors).length > 0) return;
-      await onSubmit?.({ email, password });
+
+      // Static credential check per requirements
+      const validEmail = 'dev@easy-coding.io';
+      const validPassword = 'dev@easy-coding.io';
+      if (email === validEmail && password === validPassword) {
+        setLoginError(null);
+        // Persist minimal session in localStorage
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('passly_auth', JSON.stringify({ email, loggedInAt: Date.now() }));
+        }
+        if (onSubmit) {
+          await onSubmit({ email, password });
+        } else {
+          router.push(`/${detectedLocale}/create-new-pass/get-started`);
+        }
+      } else {
+        setLoginError('Invalid credentials.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -142,10 +161,14 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full max-w-[520px] min-w-[320px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95"
+        className="w-full max-w-[520px] min-w-[320px] rounded-[12px] bg-gray-900 py-[15px] text-white text-[20px] font-medium hover:bg-gray-900/95 cursor-pointer"
       >
         {isSubmitting ? "Logging in..." : loginCta}
       </button>
+
+      {loginError ? (
+        <p className="text-[#ff4d4f] text-[14px] mt-2">{loginError}</p>
+      ) : null}
 
       <p className="text-[16px] text-black mt-4">
         {noAccount} <Link href={`/${detectedLocale}/signup`} className="text-blue-500 font-semibold">{signup}</Link>

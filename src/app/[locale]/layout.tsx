@@ -1,4 +1,4 @@
-import { translations, type Locale } from '@/lib/translations';
+import { type Locale } from '@/lib/translations';
 
 export async function generateStaticParams() {
   return [
@@ -7,14 +7,13 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
-  const t = translations[params.locale];
   
   return (
     <div>
