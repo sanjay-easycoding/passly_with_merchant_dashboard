@@ -580,7 +580,7 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
       <CoreValuesSection locale={locale} />
 
       {/* Footer */}
-      <Footer locale={locale} />
+      <Footer  />
     </>
   );
 };
