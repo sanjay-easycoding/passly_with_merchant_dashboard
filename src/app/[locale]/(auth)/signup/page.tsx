@@ -11,9 +11,14 @@ import { type Locale } from '@/lib/translations';
 export default function SignupPage({
   params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
   const [stage, setStage] = React.useState<'basic' | 'password' | 'success'>("basic");
+  const [locale, setLocale] = React.useState<string>('en');
+
+  React.useEffect(() => {
+    params.then(({ locale: loc }) => setLocale(loc));
+  }, [params]);
 
   return (
     <AuthTwoColumn rightImageSrc={stage === 'basic' ? '/signup1.jpg' : stage === 'password' ? '/signup2.jpg' : '/login4.jpg'}>
@@ -24,7 +29,7 @@ export default function SignupPage({
         <SignupPasswordForm onBack={() => setStage('basic')} onRegister={() => setStage('success')} />
       )}
       {stage === 'success' && (
-        <SignupSuccess onDone={() => (window.location.href = `/${params.locale}/login`)} />
+        <SignupSuccess onDone={() => (window.location.href = `/${locale}/login`)} />
       )}
     </AuthTwoColumn>
   );
