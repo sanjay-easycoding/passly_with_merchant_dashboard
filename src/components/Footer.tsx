@@ -20,6 +20,53 @@ const Footer = () => {
           backgroundImage: "linear-gradient(to bottom, #00000000, #00000000, #00000000, black, black), url('/footer-bg.jpg')"
         }}
       >
+
+
+
+<div className="relative py-8 sm:py-10 md:py-12 mb-50">
+<div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative">
+{/* Single Green Card Behind Wallet */}
+<div className="absolute -top-15 right-25 z-0 hidden md:block">
+<div className="w-[500px] h-30 bg-lime-400 transform rotate-7 shadow-md"></div>
+</div>
+{/* Dark Green Card Behind Wallet */}
+<div className="absolute -top-9 right-25 z-1 hidden md:block">
+<div className="w-[540px] h-28 bg-green-700 transform rotate-5 shadow-md"></div>
+</div>
+{/* Wallet Shape */}
+<div className="bg-black rounded-4xl p-6 sm:p-8 md:p-10 relative w-[650px] min-h-[450px] z-10">
+{/* Wallet Flap */}
+<div className="absolute top-18 right-0 h-full flex items-start">
+<div className="w-24 h-18 bg-white rounded-l-full flex items-center pl-2">
+<div className="w-12 h-12 bg-green-700 rounded-full"></div>
+</div>
+</div>
+{/* Wallet Content */}
+<div className="relative z-10 flex flex-col items-center text-center mt-6 sm:mt-8 md:mt-10">
+<h2 className="text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-5">
+Tap In. Stand Out. Join Us
+</h2>
+<p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mb-6 sm:mb-8">
+Ready to Go Contactless? Let’s Build Your First Pass — No App Needed.
+</p>
+<p className="text-base sm:text-lg md:text-xl text-white mb-8 sm:mb-10">
+Start in minutes — no tech skills needed.
+</p>
+<div className="w-full max-w-xl flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+<input
+type="email"
+placeholder={'Enter your e-mail'}
+className="w-full sm:flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-gray-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+/>
+<button className="bg-white text-gray-900 font-semibold py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 rounded-full border-2 border-emerald-600 hover:bg-gray-50 transition-colors duration-200 whitespace-nowrap">
+Get Started
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
         {/* Footer Content */}
         <div className="relative z-10 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
