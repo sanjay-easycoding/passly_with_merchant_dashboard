@@ -2,9 +2,8 @@
 
 import React from 'react';
 
-import type { Locale } from '@/lib/translations';
 
-export default function DashboardPage({ params }: { params: { locale: Locale } }) {
+export default function DashboardPage() {
   return (
     <div className="max-w-7xl mx-auto px-8 py-12">
       <div className="mb-8">

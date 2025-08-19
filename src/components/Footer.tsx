@@ -1,14 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { useTranslations, type Locale } from '@/lib/translations';
 
-interface FooterProps {
-  locale: Locale;
-}
 
-const Footer = ({ locale }: FooterProps) => {
-  const t = useTranslations(locale, 'footer');
+const Footer = () => {
+  
 
   return (
     <>
