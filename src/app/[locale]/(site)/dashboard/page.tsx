@@ -2,16 +2,14 @@
 
 import React from 'react';
 
-import { useTranslations, type Locale } from '@/lib/translations';
+import type { Locale } from '@/lib/translations';
 
 export default function DashboardPage({ params }: { params: { locale: Locale } }) {
-  const t = useTranslations(params.locale, 'pages');
-
   return (
     <div className="max-w-7xl mx-auto px-8 py-12">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-         Dashboard
+          Dashboard
         </h1>
         <p className="text-lg text-gray-600">
           Welcome to your Passly dashboard
