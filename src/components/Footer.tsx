@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { useTranslations } from '@/lib/translations';
-
+import { useTranslations, type Locale } from '@/lib/translations';
 
 interface FooterProps {
   locale: Locale;
 }
 
 const Footer = ({ locale }: FooterProps) => {
-  const t = useTranslations(locale);
+  const t = useTranslations(locale, 'footer');
 
   return (
     <>
@@ -18,64 +17,17 @@ const Footer = ({ locale }: FooterProps) => {
   
 </div>
 
-
-    {/* Footer */}
+      {/* Footer */}
       <footer
         className="relative text-white bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: "linear-gradient(to bottom, #00000000, #00000000, #00000000, black, black), url('/footer-bg.jpg')"
         }}
       >
-
-
-        {/* <div className="relative py-8 sm:py-10 md:py-12 mb-50">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative">
-           
-            <div className="absolute -top-15 right-25 z-0 hidden md:block">
-              <div className="w-[500px] h-30 bg-lime-400 transform rotate-7 shadow-md"></div>
-            </div>
-         
-            <div className="absolute -top-9 right-25 z-1 hidden md:block">
-              <div className="w-[540px] h-28 bg-green-700 transform rotate-5 shadow-md"></div>
-            </div>
-            <div className="bg-black rounded-4xl p-6 sm:p-8 md:p-10 relative w-[650px] min-h-[450px] z-10">
-              <div className="absolute top-18 right-0 h-full flex items-start">
-                <div className="w-24 h-18 bg-white rounded-l-full flex items-center pl-2">
-                  <div className="w-12 h-12 bg-green-700 rounded-full"></div>
-                </div>
-              </div>
-              <div className="relative z-10 flex flex-col items-center text-center mt-6 sm:mt-8 md:mt-10">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-5">
-                  {t.footerCTA?.headline || 'Tap In. Stand Out. Join Us'}
-                </h2>
-                <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mb-6 sm:mb-8">
-                  {t.footerCTA?.subheadline || '“Ready to Go Contactless? Let’s Build Your First Pass — No App Needed.”'}
-                </p>
-                <p className="text-base sm:text-lg md:text-xl text-white mb-8 sm:mb-10">
-                  {t.footerCTA?.description || 'Start in minutes — no tech skills needed.'}
-                </p>
-                <div className="w-full max-w-xl flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                  <input
-                    type="email"
-                    placeholder={t.footerCTA?.emailPlaceholder || 'Enter your e-mail'}
-                    className="w-full sm:flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-gray-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-600"
-                  />
-                  <button className="bg-white text-gray-900 font-semibold py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 rounded-full border-2 border-emerald-600 hover:bg-gray-50 transition-colors duration-200 whitespace-nowrap">
-                    {t.footerCTA?.ctaButton || 'Get Started'}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
-
-
         {/* Footer Content */}
         <div className="relative z-10 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              
               {/* Left Side - Company Information */}
               <div className="space-y-6">
                 {/* Logo/Icon */}
@@ -83,15 +35,13 @@ const Footer = ({ locale }: FooterProps) => {
                   <Image src="/passly_logo.svg" alt="Passly Logo" width={48} height={40} className="w-12 h-10" />
                   <span className="text-2xl sm:text-3xl font-bold text-black lg:text-white">Passly</span>
                 </div>
-                
                 {/* Tagline */}
                 <p className="text-black lg:text-white text-lg sm:text-xl max-w-md">
-                  {t.footer?.tagline || 'The Future of Wallet Engagement.'}
+                  The Future of Wallet Engagement.
                 </p>
-                
                 {/* Copyright */}
                 <p className="text-black lg:text-white text-sm sm:text-base">
-                  {t.footer?.copyright || '© 2025 Passly. All rights Reserved'}
+                 © 2025 Passly. All rights Reserved
                 </p>
               </div>
 
@@ -100,19 +50,19 @@ const Footer = ({ locale }: FooterProps) => {
                 {/* Primary Navigation Links */}
                 <div className="flex flex-wrap gap-6 sm:gap-8">
                   <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
-                    {t.footer?.navigation?.home || 'Home'}
+                Home
                   </a>
                   <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
-                    {t.footer?.navigation?.product || 'Product'}
+                    Product
                   </a>
                   <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
-                    {t.footer?.navigation?.pricing || 'Pricing'}
+                  Pricing
                   </a>
                   <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
-                    {t.footer?.navigation?.blog || 'Blog'}
+                  Blog
                   </a>
                   <a href="#" className="text-black lg:text-white hover:text-white transition-colors duration-200">
-                    {t.footer?.navigation?.contact || 'Contact'}
+                    Contact
                   </a>
                 </div>
 
@@ -141,19 +91,19 @@ const Footer = ({ locale }: FooterProps) => {
                 {/* Legal/Policy Links */}
                 <div className="flex flex-wrap gap-6 sm:gap-8">
                   <a href="#" className="text-gray-400 hover:text-white underline transition-colors duration-200">
-                    {t.footer?.legal?.privacyPolicy || 'Privacy Policy'}
+                 Privacy Policy
                   </a>
                   <a href="#" className="text-gray-400 hover:text-white underline transition-colors duration-200">
-                    {t.footer?.legal?.termsOfServices || 'Terms of Services'}
+                    Terms of Services
                   </a>
                   <a href="#" className="text-gray-400 hover:text-white underline transition-colors duration-200">
-                    {t.footer?.legal?.newsletterSignup || 'Newsletter Sign-up'}
+                 Newsletter Sign-up
                   </a>
                 </div>
 
                 {/* Newsletter Description */}
                 <p className="text-gray-400 text-sm sm:text-base max-w-md">
-                  {t.footer?.newsletterDescription || 'Get updates on new features, guides, and exclusive offers.'}
+                 Get updates on new features, guides, and exclusive offers.
                 </p>
               </div>
             </div>

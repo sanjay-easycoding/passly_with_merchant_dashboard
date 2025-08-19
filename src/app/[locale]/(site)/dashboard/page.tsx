@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import { useTranslations } from '@/lib/translations';
-import type { Locale } from '@/lib/translations';
+
+import { useTranslations, type Locale } from '@/lib/translations';
 
 export default function DashboardPage({ params }: { params: { locale: Locale } }) {
-  const t = useTranslations(params.locale, 'dashboard');
+  const t = useTranslations(params.locale, 'pages');
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-12">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          {t?.title || 'Dashboard'}
+         Dashboard
         </h1>
         <p className="text-lg text-gray-600">
-          {t?.subtitle || 'Welcome to your Passly dashboard'}
+          Welcome to your Passly dashboard
         </p>
       </div>
 
@@ -67,14 +67,14 @@ export default function DashboardPage({ params }: { params: { locale: Locale } }
       {/* Recent Activity */}
       <div className="mt-8 bg-white rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-          {t?.recentActivity?.title || 'Recent Activity'}
+          Recent Activity
         </h2>
         <div className="text-center py-8 text-gray-500">
           <svg className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 00-2 2v2h4V7a2 2 0 00-2-2z" />
           </svg>
           <p className="text-lg">
-            {t?.recentActivity?.empty || 'No recent activity to display'}
+            No recent activity to display
           </p>
         </div>
       </div>

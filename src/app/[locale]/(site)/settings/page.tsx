@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import { useTranslations } from '@/lib/translations';
-import type { Locale } from '@/lib/translations';
+
+import { useTranslations, type Locale } from '@/lib/translations';
 
 export default function SettingsPage({ params }: { params: { locale: Locale } }) {
-  const t = useTranslations(params.locale, 'settings');
+  const t = useTranslations(params.locale, 'pages');
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-12">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          {t?.title || 'Settings'}
+          {t?.settings?.configure || 'Settings'}
         </h1>
         <p className="text-lg text-gray-600">
-          {t?.subtitle || 'Manage your account and preferences'}
+          Manage your account and preferences
         </p>
       </div>
 
