@@ -2,12 +2,12 @@ import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 import { type Locale } from '@/lib/translations';
 
-export default function SlugPage({
+export default async function SlugPage({
   params,
 }: {
-  params: { slug: string[] };
+  params: Promise<{ slug: string[] }>;
 }) {
-  const slug = params.slug;
+  const { slug } = await params;
   
   // Handle language root paths: /en, /de, /fr
   if (slug.length === 1) {
