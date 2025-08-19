@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 
 import AuthTwoColumn from '@/components/auth/AuthTwoColumn';
@@ -6,16 +8,24 @@ import ForgotPasswordSuccess from '@/components/auth/ForgotPasswordSuccess';
 import OtpVerificationForm from '@/components/auth/OtpVerificationForm';
 import { type Locale } from '@/lib/translations';
 
-export default async function ForgotPasswordPage({
+export default function ForgotPasswordPage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: { locale: Locale };
 }) {
-  const { locale } = await params;
+  const [stage, setStage] = React.useState<'email' | 'otp' | 'success'>("email");
 
   return (
-    <AuthTwoColumn rightImageSrc="/login2.jpg">
-      <ForgotPasswordForm onSubmit={() => {}} />
+    <AuthTwoColumn rightImageSrc={stage === 'email' ? '/login2.jpg' : stage === 'otp' ? '/login3.jpg' : '/login4.jpg'}>
+      {stage === 'email' && (
+        <ForgotPasswordForm onSubmit={() => setStage('otp')} />
+      )}
+      {stage === 'otp' && (
+        <OtpVerificationForm onVerify={() => setStage('success')} onBack={() => setStage('email')} />
+      )}
+      {stage === 'success' && (
+        <ForgotPasswordSuccess onDone={() => (window.location.href = `/${params.locale}/login`)} />
+      )}
     </AuthTwoColumn>
   );
 }
