@@ -5,14 +5,14 @@ import { type Locale } from '@/lib/translations';
 export default async function SlugPage({
   params,
 }: {
-  params: Promise<{ slug: string[] }>;
+  params: { slug: string[] };
 }) {
-  const { slug } = await params;
-  
+  const { slug } = params;
+
   // Handle language root paths: /en, /de, /fr
   if (slug.length === 1) {
     const locale = slug[0] as Locale;
-    
+
     // Check if it's a valid locale
     if (['en', 'de'].includes(locale)) {
       // Serve content directly for language roots
@@ -24,7 +24,7 @@ export default async function SlugPage({
       );
     }
   }
-  
+
   // If not a valid locale or has more segments, redirect to German dashboard
   return (
     <div>
