@@ -4,8 +4,9 @@ import React from 'react';
 
 import { useTranslations, type Locale } from '@/lib/translations';
 
-export default function SettingsPage({ params }: { params: { locale: Locale } }) {
-  const t = useTranslations(params.locale, 'pages');
+export default async function SettingsPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const t = useTranslations(locale, 'pages');
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-12">
