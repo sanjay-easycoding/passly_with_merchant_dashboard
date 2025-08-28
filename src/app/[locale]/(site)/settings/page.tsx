@@ -10,7 +10,7 @@ export default function SettingsPage() {
           Settings
         </h1>
         <p className="text-lg text-gray-600">
-          Manage your account and preferences
+          Manage your account and preference
         </p>
       </div>
 
