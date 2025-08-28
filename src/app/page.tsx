@@ -1,12 +1,5 @@
-import HeroSection from '@/components/HeroSection';
-import Navigation from '@/components/Navigation';
+import { redirect } from 'next/navigation';
 
 export default function HomePage() {
-  // Serve German content by default at root level
-  return (
-    <div>
-      <Navigation locale="de" />
-      <HeroSection locale="de" />
-    </div>
-  );
+  redirect('/de');
 }
