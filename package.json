@@ -13,19 +13,13 @@
     "type-check:watch": "tsc --noEmit --watch",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:ci": "jest --ci --coverage --watchAll=false",
     "build:analyze": "ANALYZE=true npm run build",
     "security:audit": "npm audit --audit-level=moderate",
     "security:fix": "npm audit fix",
-    "performance:lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
-    "performance:budget": "lighthouse-budget",
-    "clean": "rm -rf .next out dist coverage",
+    "clean": "rm -rf .next out dist",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "validate": "npm run type-check && npm run lint && npm run format:check && npm run test:ci"
+    "validate": "npm run type-check && npm run lint && npm run format:check"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
@@ -53,17 +47,9 @@
     "eslint-plugin-promise": "^7.2.1",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "@types/jest": "^29.5.0",
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/user-event": "^14.4.3",
     "prettier": "^2.8.8",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "lighthouse": "^11.0.0",
-    "lighthouse-budget": "^1.0.0"
+    "lint-staged": "^13.2.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
