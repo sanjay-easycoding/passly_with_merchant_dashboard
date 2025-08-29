@@ -4,10 +4,6 @@ import React from 'react';
 
 import { type Locale } from '@/lib/translations';
 
-import CoreValuesSection from './CoreValuesSection';
-import Footer from './Footer';
-import GetStartedSection from './GetStartedSection';
-import JoinThousandsSection from './JoinThousandsSection';
 
 interface HeroSectionProps {
   locale: Locale;
@@ -196,47 +192,6 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
             }}
             className="absolute"
           >
-            {/* Floating Particles */}
-            {/* <motion.div
-              animate={{ 
-                y: [0, -10, 0],
-                rotate: [0, 360]
-              }}
-              transition={{ 
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute -top-8 -left-8 w-4 h-4 bg-blue-400 rounded-full opacity-60"
-            ></motion.div> */}
-            
-            {/* <motion.div
-              animate={{ 
-                y: [0, 10, 0],
-                rotate: [0, -360]
-              }}
-              transition={{ 
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1
-              }}
-              className="absolute -bottom-8 -right-8 w-3 h-3 bg-green-400 rounded-full opacity-60"
-            ></motion.div> */}
-            
-            {/* <motion.div
-              animate={{ 
-                x: [0, 15, 0],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{ 
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5
-              }}
-              className="absolute -top-4 -left-4 w-2 h-2 bg-purple-400 rounded-full opacity-50"
-            ></motion.div> */}
 
             {/* Wallet Body */}
             <motion.div 
@@ -458,38 +413,7 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
               </motion.div>
             </motion.div>
             
-            {/* Floating Icons with Enhanced Animation */}
-            {/* <motion.div
-              initial={{ y: 20, opacity: 0, scale: 0 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 8.4 }}
-              whileHover={{ scale: 1.2, rotate: 360 }}
-              className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer"
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.3, delay: 8.6 }}
-                className="w-4 h-4 bg-white rounded-sm"
-              ></motion.div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ y: 20, opacity: 0, scale: 0 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 8.6 }}
-              whileHover={{ scale: 1.2, rotate: -360 }}
-              className="absolute -bottom-4 -left-4 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer"
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.3, delay: 8.8 }}
-                className="w-4 h-4 bg-white rounded-sm"
-              ></motion.div>
-            </motion.div> */}
-            
-            {/* Connection Lines */}
+
             <motion.svg
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -570,17 +494,7 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
         </div>
       </section>
       
-      {/* Get Started Section */}
-      <GetStartedSection locale={locale} />
-      
-      {/* Join Thousands Section */}
-      <JoinThousandsSection locale={locale} />
-      
-      {/* Core Values Section */}
-      <CoreValuesSection locale={locale} />
 
-      {/* Footer */}
-      <Footer  />
     </>
   );
 };
