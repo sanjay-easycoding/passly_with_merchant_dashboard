@@ -104,24 +104,8 @@ const customJestConfig = {
     '/.turbo/',
   ],
   
-  // Test results processor
-  testResultsProcessor: 'jest-sonar-reporter',
-  
   // Reporters
-  reporters: [
-    'default',
-    [
-      'jest-junit',
-      {
-        outputDirectory: 'coverage',
-        outputName: 'junit.xml',
-        classNameTemplate: '{classname}-{title}',
-        titleTemplate: '{classname}-{title}',
-        ancestorSeparator: ' › ',
-        usePathForSuiteName: true,
-      },
-    ],
-  ],
+  reporters: ['default'],
   
   // Global setup and teardown
   globalSetup: '<rootDir>/jest.global-setup.js',
@@ -136,13 +120,10 @@ const customJestConfig = {
   },
   
   // Watch plugins
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
+  watchPlugins: [],
   
   // Snapshot serializers
-  snapshotSerializers: ['jest-serializer-path'],
+  snapshotSerializers: [],
   
   // Test location
   testLocationInResults: true,

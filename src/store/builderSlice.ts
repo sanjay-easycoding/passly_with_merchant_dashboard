@@ -249,8 +249,8 @@ function isValidEmail(email: string): boolean {
 
 function isValidPhoneNumber(phone: string): boolean {
   // Basic phone validation - allows international formats
-  const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-  return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+  const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
+  return phoneRegex.test(phone.replace(/[\s\-()]/g, ''));
 }
 
 export const {

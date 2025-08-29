@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged (this will run ESLint and Prettier on staged files)
+npm run pre-commit
+
+echo "✅ Pre-commit checks completed successfully!"

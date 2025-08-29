@@ -46,7 +46,7 @@ export class SecurityUtils {
     
     return {
       isValid: emailRegex.test(sanitized),
-      sanitized: sanitized,
+      sanitized,
     };
   }
 
@@ -58,12 +58,12 @@ export class SecurityUtils {
       return { isValid: false, sanitized: '' };
     }
 
-    const sanitized = phone.replace(/[\s\-\(\)]/g, '');
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const sanitized = phone.replace(/[\s\-()]/g, '');
+    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
     
     return {
       isValid: phoneRegex.test(sanitized),
-      sanitized: sanitized,
+      sanitized,
     };
   }
 
