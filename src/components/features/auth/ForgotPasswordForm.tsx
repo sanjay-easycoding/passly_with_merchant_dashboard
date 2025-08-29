@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
@@ -21,6 +22,7 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
   const title = t?.pages?.forgotPassword?.title ?? 'Identity Confirmation';
   const subtitle = t?.pages?.forgotPassword?.subtitle ?? 'Enter mail id to get OTP.';
   const cta = t?.pages?.forgotPassword?.cta ?? 'Get OTP';
+  const backLabel = t?.pages?.forgotPassword?.back ?? 'Back';
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,7 +44,7 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
         <p className="text-center text-[black] text-[16px] mb-[58px]">{subtitle}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col items-center gap-[50px]">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center gap-[25px]">
         <div className="w-full max-w-[640px] min-w-[400px]">
           <div className="relative w-full">
             <Image src="/emailIcon.png" alt="email" width={16} height={16} className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 w-[16px] h-[16px]" />
@@ -62,7 +64,7 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
               }}
               placeholder="e-mail"
               aria-invalid={!!error}
-              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${error ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-teal-300 focus:border-teal-300'}`}
+              className={`w-full rounded-[12px] bg-white pl-[48px] pr-[48px] py-[15px] text-[16px] font-medium shadow-[2px_3px_4px_0px_#00000059] placeholder:text-gray-400 focus:outline-none ${error ? 'border border-[#ff4d4f] focus:border-[#ff4d4f]' : 'border border-gray-200 focus:border-gray-200'}`}
             />
           </div>
           <p className="text-[#ff4d4f] text-[14px] mt-2 min-h-[16px]">{touched && error ? error : ''}</p>
@@ -75,6 +77,13 @@ export default function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps
         >
           {isSubmitting ? 'Please wait…' : cta}
         </button>
+
+        <Link
+          href={`/${detectedLocale}/login`}
+          className="w-full max-w-[520px] min-w-[320px] rounded-[12px] border border-gray-300 bg-white py-[15px] text-gray-900 text-[20px] font-medium hover:bg-gray-50 text-center"
+        >
+          {backLabel}
+        </Link>
       </form>
     </div>
   );

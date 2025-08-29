@@ -245,7 +245,8 @@
     "forgotPassword": {
       "title": "Identity Confirmation",
       "subtitle": "Enter mail id to get OTP.",
-      "cta": "Get OTP"
+      "cta": "Get OTP",
+      "back": "Back"
     },
     "forgotPasswordOtp": {
       "title": "Identity Validation",

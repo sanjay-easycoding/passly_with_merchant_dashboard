@@ -245,7 +245,8 @@
     "forgotPassword": {
       "title": "Identitätsbestätigung",
       "subtitle": "Geben Sie Ihre E-Mail ein, um den OTP zu erhalten.",
-      "cta": "OTP anfordern"
+      "cta": "OTP anfordern",
+      "back": "Zurück"
     },
     "forgotPasswordOtp": {
       "title": "Identitätsprüfung",
