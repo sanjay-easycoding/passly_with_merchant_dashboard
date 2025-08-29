@@ -23,6 +23,19 @@ export default function Dashboard({ locale }: DashboardProps) {
         </p>
       </div>
 
+      {/* Create New Pass Button */}
+      <div className="mb-8 flex justify-center">
+        <a
+          href={`/${locale}/create-new-pass/get-started`}
+          className="inline-flex items-center px-6 py-3 bg-[#008929] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+        >
+          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          Create New Pass
+        </a>
+      </div>
+
       {/* Dashboard Content */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Stats Cards */}
