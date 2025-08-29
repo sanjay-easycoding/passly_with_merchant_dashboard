@@ -18,9 +18,10 @@ export default function LandingPage({ params }: LandingPageProps) {
       <Navigation locale={locale} />
       <main>
         <HeroSection locale={locale} />
-        <CoreValuesSection locale={locale} />
+       
         <GetStartedSection locale={locale} />
         <JoinThousandsSection locale={locale} />
+        <CoreValuesSection locale={locale} />
       </main>
       <Footer />
     </div>
