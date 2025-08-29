@@ -1,9 +1,9 @@
-import HeroSection from '@/components/features/HeroSection';
 import CoreValuesSection from '@/components/features/CoreValuesSection';
 import GetStartedSection from '@/components/features/GetStartedSection';
+import HeroSection from '@/components/features/HeroSection';
 import JoinThousandsSection from '@/components/features/JoinThousandsSection';
-import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
+import Navigation from '@/components/layout/Navigation';
 import { type Locale } from '@/lib/translations';
 
 interface LandingPageProps {

@@ -98,7 +98,7 @@ export const useClickOutside = (callback: () => void) => {
 /**
  * Custom hook for managing async operations
  */
-export const useAsync = <T, E = any>(asyncFunction: () => Promise<T>) => {
+export const useAsync = <T, E = unknown>(asyncFunction: () => Promise<T>) => {
   const [status, setStatus] = useState<'idle' | 'pending' | 'success' | 'error'>('idle');
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<E | null>(null);
