@@ -186,10 +186,47 @@
   },
   "pages": {
     "dashboard": {
-      "welcome": "Willkommen in Ihrem Dashboard"
+      "welcome": "Willkommen in Ihrem Dashboard",
+      "title": "Dashboard",
+      "description": "Willkommen in Ihrem Passly Dashboard",
+      "stats": {
+        "totalPasses": "Gesamte Pässe",
+        "activeUsers": "Aktive Benutzer",
+        "revenue": "Einnahmen"
+      },
+      "recentActivity": {
+        "title": "Letzte Aktivitäten",
+        "noActivity": "Keine kürzlichen Aktivitäten anzuzeigen"
+      }
     },
     "settings": {
-      "configure": "Konfigurieren Sie Ihre Einstellungen"
+      "configure": "Konfigurieren Sie Ihre Einstellungen",
+      "title": "Einstellungen",
+      "description": "Verwalten Sie Ihr Konto und Ihre Präferenzen",
+      "navigation": {
+        "profile": "Profil",
+        "security": "Sicherheit",
+        "notifications": "Benachrichtigungen",
+        "billing": "Abrechnung"
+      },
+      "profile": {
+        "title": "Profilinformationen",
+        "fullName": "Vollständiger Name",
+        "fullNamePlaceholder": "Geben Sie Ihren vollständigen Namen ein",
+        "email": "E-Mail-Adresse",
+        "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+        "company": "Unternehmen",
+        "companyPlaceholder": "Geben Sie Ihren Firmennamen ein",
+        "saveChanges": "Änderungen speichern"
+      },
+      "security": {
+        "title": "Sicherheitseinstellungen",
+        "currentPassword": "Aktuelles Passwort",
+        "currentPasswordPlaceholder": "Geben Sie das aktuelle Passwort ein",
+        "newPassword": "Neues Passwort",
+        "newPasswordPlaceholder": "Geben Sie das neue Passwort ein",
+        "updatePassword": "Passwort aktualisieren"
+      }
     },
     "createPass": {
       "create": "Erstellen Sie einen neuen Pass"

@@ -186,10 +186,47 @@
   },
   "pages": {
     "dashboard": {
-      "welcome": "Welcome to your Dashboard"
+      "welcome": "Welcome to your Dashboard",
+      "title": "Dashboard",
+      "description": "Welcome to your Passly dashboard",
+      "stats": {
+        "totalPasses": "Total Passes",
+        "activeUsers": "Active Users",
+        "revenue": "Revenue"
+      },
+      "recentActivity": {
+        "title": "Recent Activity",
+        "noActivity": "No recent activity to display"
+      }
     },
     "settings": {
-      "configure": "Configure your settings"
+      "configure": "Configure your settings",
+      "title": "Settings",
+      "description": "Manage your account and preference",
+      "navigation": {
+        "profile": "Profile",
+        "security": "Security",
+        "notifications": "Notifications",
+        "billing": "Billing"
+      },
+      "profile": {
+        "title": "Profile Information",
+        "fullName": "Full Name",
+        "fullNamePlaceholder": "Enter your full name",
+        "email": "Email Address",
+        "emailPlaceholder": "Enter your email",
+        "company": "Company",
+        "companyPlaceholder": "Enter your company name",
+        "saveChanges": "Save Changes"
+      },
+      "security": {
+        "title": "Security Settings",
+        "currentPassword": "Current Password",
+        "currentPasswordPlaceholder": "Enter current password",
+        "newPassword": "New Password",
+        "newPasswordPlaceholder": "Enter new password",
+        "updatePassword": "Update Password"
+      }
     },
     "createPass": {
       "create": "Create a new pass"
