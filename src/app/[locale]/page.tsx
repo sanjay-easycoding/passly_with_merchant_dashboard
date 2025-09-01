@@ -1,4 +1,3 @@
-import CoreValuesSection from '@/components/features/CoreValuesSection';
 import GetStartedSection from '@/components/features/GetStartedSection';
 import HeroSection from '@/components/features/HeroSection';
 import JoinThousandsSection from '@/components/features/JoinThousandsSection';

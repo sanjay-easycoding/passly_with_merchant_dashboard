@@ -13,9 +13,7 @@ const navItems = [
   { name: 'settings', href: 'settings' }
 ];
 
-const navButtons = [
-  { name: 'login', variant: 'primary' }
-];
+// Removed unused navButtons array
 
 const languages = [
   { code: 'de', name: 'DE' },
@@ -35,7 +33,18 @@ const Navigation = ({ locale }: NavigationProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   
-  const t = getTranslations(locale) as any;
+  const t = getTranslations(locale) as {
+    navigation: {
+      dashboard: string;
+      createNewPass: string;
+      settings: string;
+      login: string;
+      logout: string;
+    };
+    common: {
+      title: string;
+    };
+  };
 
   useEffect(() => {
     setIsClient(true);
