@@ -20,7 +20,7 @@ export default function LandingPage({ params }: LandingPageProps) {
         <HeroSection locale={locale} />
         <GetStartedSection locale={locale} />
         <JoinThousandsSection locale={locale} />
-        <CoreValuesSection locale={locale} />
+       
       </main>
       <Footer />
     </div>

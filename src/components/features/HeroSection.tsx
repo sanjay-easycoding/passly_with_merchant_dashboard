@@ -469,25 +469,7 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
               </button>
             </div>
             
-            {/* Bottom Features */}
-            <div className="flex justify-center items-center gap-8 flex-wrap md:gap-16">
-              <span className="text-gray-600 text-sm md:text-base">
-                {locale === 'de' && 'Digitale Gutscheine'}
-                {locale === 'en' && 'Digital Coupons'}
-              </span>
-              <span className="text-gray-600 text-sm md:text-base">
-                {locale === 'de' && 'Exklusiver Pass'}
-                {locale === 'en' && 'Exclusive Pass'}
-              </span>
-              <span className="text-gray-600 text-sm md:text-base">
-                {locale === 'de' && 'Apple Wallet'}
-                {locale === 'en' && 'Apple Wallet'}
-              </span>
-              <span className="text-gray-600 text-sm md:text-base">
-                {locale === 'de' && 'Smart QR'}
-                {locale === 'en' && 'Smart QR'}
-              </span>
-            </div>
+
 
             
           </div>

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <>
 
-<div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-[500px]">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-[100px]">
   
 </div>
 
