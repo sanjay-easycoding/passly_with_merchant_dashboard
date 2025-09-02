@@ -30,14 +30,14 @@ const JoinThousandsSection = ({ locale }: JoinThousandsSectionProps) => {
           <div className="text-left flex-1">
             {/* Main Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-black mb-8 sm:mb-10 md:mb-12 leading-tight">
-              {locale === 'de' && 'Treten Sie Tausenden von Unternehmen bei'}
-              {locale === 'en' && 'Join Thousands of Businesses'}
+              {locale === 'de' && 'Intelligente Kundenbindung'}
+              {locale === 'en' && 'Smart Loyality'}
             </h2>
             
             {/* Description Text */}
             <p className="text-xl text-black leading-relaxed mb-8 sm:mb-10 max-w-2xl">
-              {locale === 'de' && 'Über 10.000 Unternehmen vertrauen bereits auf Passly, um ihre Kundenbindung zu digitalisieren und ihre Geschäftsergebnisse zu verbessern.'}
-              {locale === 'en' && 'Over 10,000 businesses already trust Passly to digitize their customer engagement and improve their business results.'}
+              {locale === 'de' && 'Kundenzugriff ohne Reibung. So können Sie sich auf die persönliche Verbindung konzentrieren.'}
+              {locale === 'en' && 'Customer interaction without any friction. So you can focus on the personal connection.'}
             </p>
             
             {/* Stats or Features */}
