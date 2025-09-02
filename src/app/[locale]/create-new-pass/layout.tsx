@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import Footer from '@/components/layout/Footer';
 import Navigation from '@/components/layout/Navigation';
+
 import type { Locale } from '@/lib/translations';
 
 // Type the children prop
