@@ -60,7 +60,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
         if (onSubmit) {
           await onSubmit({ email, password });
         } else {
-          router.push(`/${detectedLocale}/create-new-pass/get-started`);
+          router.push(`/${detectedLocale}/dashboard`);
         }
       } else {
         setLoginError('Invalid credentials.');
@@ -72,9 +72,9 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
 
   return (
     <div className="flex flex-col w-full max-w-[400px]">
-    <div className="w-full">
-      <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[50px]">{title}</h1>
- 
+    <div className="w-full flex flex-col items-center">
+      <Image src="/passly_logo.svg" alt="Passly Logo" width={60} height={60} className="w-[60px] h-[60px] mb-6" />
+      <h1 className="text-center text-[28px] font-semibold text-gray-900 mb-[30px]">{title}</h1>
     </div>
     <form onSubmit={handleSubmit} className="flex flex-col items-center gap-[24px]">
       {/* Email */}
@@ -171,15 +171,15 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
         <p className="text-[#ff4d4f] text-[14px] mt-2">{loginError}</p>
       ) : null}
 
-      <p className="text-[16px] text-black mt-4">
+      <p className="text-[16px] text-black mt-1">
         {noAccount} <Link href={`/${detectedLocale}/signup`} className="text-blue-500 font-semibold">{signup}</Link>
       </p>
 
-      <div className="relative w-full text-center mt-3">
+      <div className="relative w-full text-center mt-2">
         <span className="relative z-10 px-4 bg-transparent text-black text-[16px]">{orWith}</span>
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-[40px] w-full">
+      <div className="mt-2 flex items-center justify-center gap-[40px] w-full">
         <button type="button" className="w-[3rem] h-[3rem] rounded-lg">
           <Image src="/google.png" alt="Google" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
         </button>

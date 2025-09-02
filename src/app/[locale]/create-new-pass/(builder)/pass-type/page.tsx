@@ -75,57 +75,7 @@ export default function PassTypePage({ params }: { params: { locale: Locale } })
             onClick={() => { setSelected('loyalty'); dispatch(setType('loyalty')); }}
           />
 
-          <div className="relative opacity-60 cursor-not-allowed">
-            <Tile
-              title={t.passType.tiles.discount.title}
-              subtitle={t.passType.tiles.discount.subtitle}
-              emoji="%"
-              active={false}
-              onClick={() => {}}
-            />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <ComingSoonChip />
-            </div>
-          </div>
 
-          <div className="relative opacity-60 cursor-not-allowed">
-            <Tile
-              title={t.passType.tiles.tickets.title}
-              subtitle={t.passType.tiles.tickets.subtitle}
-              emoji="🎟️"
-              active={false}
-              onClick={() => {}}
-            />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <ComingSoonChip />
-            </div>
-          </div>
-
-          <div className="relative opacity-60 cursor-not-allowed">
-            <Tile
-              title={t.passType.tiles.gift.title}
-              subtitle={t.passType.tiles.gift.subtitle}
-              emoji="🎁"
-              active={false}
-              onClick={() => {}}
-            />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <ComingSoonChip />
-            </div>
-          </div>
-
-          <div className="relative opacity-60 cursor-not-allowed">
-            <Tile
-              title={t.passType.tiles.membership.title}
-              subtitle={t.passType.tiles.membership.subtitle}
-              emoji="🪪"
-              active={false}
-              onClick={() => {}}
-            />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <ComingSoonChip />
-            </div>
-          </div>
         </div>
 
         {/* Campaign Name section */}

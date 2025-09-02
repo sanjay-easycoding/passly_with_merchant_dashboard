@@ -10,7 +10,7 @@ export default function CreatePassBuilderLayout({
   params: { locale: Locale };
 }) {
   return (
-    <section className="bg-[#F8F9FA] min-h-screen">
+    <section className="bg-[#ffffff] min-h-screen mt-10">
       <div className="max-w-7xl mx-auto px-6 py-6">
         <Steps />
       </div>

@@ -128,7 +128,7 @@ const Navigation = ({ locale }: NavigationProps) => {
   if (!isClient) {
     return (
       <nav className="relative">
-        <div className="max-w-8xl mx-auto px-8 py-4">
+        <div className="max-w-[1440px] mx-auto px-8 py-4">
           <div className="bg-white/40 backdrop-blur-xl rounded-full shadow-lg border border-white/30 px-6 py-3">
             <div className="flex justify-between items-center">
               {/* Logo Section */}
@@ -270,7 +270,7 @@ const Navigation = ({ locale }: NavigationProps) => {
 
   return (
     <nav className="sticky top-4 z-50">
-      <div className="max-w-7xl mx-auto px-8 py-0">
+      <div className="max-w-[1440px] mx-auto px-8 py-0">
         <div className="bg-white/40 backdrop-blur-xl rounded-full shadow-lg border border-white/30 px-6 py-3">
           <div className="flex justify-between items-center">
             {/* Logo Section */}

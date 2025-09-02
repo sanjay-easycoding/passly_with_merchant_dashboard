@@ -23,17 +23,17 @@ export default function AuthTwoColumn({
             <AuthLangSwitch />
           </div>
           {/* Ellipse image (top-left) */}
-          <div className="absolute top-0 left-0 z-10 w-[150px] h-[150px]">
+          {/* <div className="absolute top-0 left-0 z-10 w-[150px] h-[150px]">
             <Image src="/Ellipse.png" alt="Ellipse" width={150} height={150} className="w-full h-full object-cover" />
-          </div>
+          </div> */}
 
           {/* Children container (title, subtitle, form, etc. should be provided by child component) */}
           {children}
 
           {/* Group image (bottom-right) */}
-          <div className="absolute right-4 bottom-4 z-10 w-[150px] h-[150px]">
+          {/* <div className="absolute right-4 bottom-4 z-10 w-[150px] h-[150px]">
             <Image src="/Group.png" alt="Group" width={150} height={150} className="w-full h-full object-cover" />
-          </div>
+          </div> */}
         </div>
 
         {/* Right side */}

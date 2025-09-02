@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import Footer from '@/components/layout/Footer';
 import Navigation from '@/components/layout/Navigation';
+import type { Locale } from '@/lib/translations';
 
 // Type the children prop
 const CreateNewPassLayout: React.FC<React.PropsWithChildren<Record<string, never>>> = ({ children }) => {
@@ -18,9 +19,9 @@ const CreateNewPassLayout: React.FC<React.PropsWithChildren<Record<string, never
     }
   }, [router, locale]);
 
-  return (
+  return ( 
     <div className="min-h-screen">
-      <Navigation locale={locale} />
+      <Navigation locale={locale as Locale} />
       <main>
         {children}
       </main>

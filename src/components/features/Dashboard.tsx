@@ -26,7 +26,7 @@ export default function Dashboard({ locale }: DashboardProps) {
       {/* Create New Pass Button */}
       <div className="mb-8 flex justify-center">
         <a
-          href={`/${locale}/create-new-pass/get-started`}
+          href={`/${locale}/create-new-pass/pass-type`}
           className="inline-flex items-center px-6 py-3 bg-[#008929] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

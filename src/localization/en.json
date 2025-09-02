@@ -232,7 +232,7 @@
       "create": "Create a new pass"
     },
     "login": {
-      "title": "Enter Portal",
+      "title": "Enter Passly",
       "subtitle": "Access your account securely",
       "emailPlaceholder": "e-mail",
       "passwordPlaceholder": "Password",

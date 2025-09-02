@@ -232,7 +232,7 @@
       "create": "Erstellen Sie einen neuen Pass"
     },
     "login": {
-      "title": "Portal betreten",
+      "title": "Passly betreten",
       "subtitle": "Greifen Sie sicher auf Ihr Konto zu",
       "emailPlaceholder": "E-Mail",
       "passwordPlaceholder": "Passwort",

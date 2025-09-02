@@ -22,5 +22,5 @@ export function useTranslations(locale: Locale, page: string) {
   if (!pageTranslations) {
     throw new Error(`Translations not found for page: ${page}`);
   }
-  return pageTranslations;
+  return pageTranslations as any;
 }
