@@ -34,13 +34,7 @@ export default function PassTypePage({ params }: { params: { locale: Locale } })
     dispatch(setType(selected));
   };
 
-  function ComingSoonChip() {
-    return (
-      <span className="inline-block px-4 py-1 rounded-full bg-[#000000] text-white text-[14px] font-semibold shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
-        {t.passType.comingSoon}
-      </span>
-    );
-  }
+
 
   function Tile({ title, subtitle, emoji, active, onClick }: TileProps) {
     return (
