@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { getTranslations, type Locale } from '@/lib/translations';
+import {type Locale } from '@/lib/translations';
 
 interface JoinThousandsSectionProps {
   locale: Locale;
 }
 
 const JoinThousandsSection = ({ locale }: JoinThousandsSectionProps) => {
-  const t = getTranslations(locale);
+
 
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">

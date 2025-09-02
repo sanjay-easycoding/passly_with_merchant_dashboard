@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import AuthLangSwitch from './AuthLangSwitch';
+
 import type { Locale } from '@/lib/translations';
 
 type AuthTwoColumnProps = {
