@@ -18,7 +18,7 @@ const JoinThousandsSection = ({ locale }: JoinThousandsSectionProps) => {
           {/* Left Section - Image */}
           <div className="flex justify-center lg:justify-start bg-white h-full flex-1">
             <Image
-              src="/tech_image_join_thousands.png"
+              src="/passly_iphone_image.png"
               alt="Join Thousands of Users"
               width={600}
               height={400}

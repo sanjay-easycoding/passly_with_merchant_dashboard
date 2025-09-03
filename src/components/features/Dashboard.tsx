@@ -14,26 +14,29 @@ export default function Dashboard({ locale }: DashboardProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          {dashboardT?.title || 'Dashboard'}
-        </h1>
-        <p className="text-lg text-gray-600">
-          {dashboardT?.description || 'Welcome to your Passly dashboard'}
-        </p>
-      </div>
-
-      {/* Create New Pass Button */}
-      <div className="mb-8 flex justify-center">
-        <a
-          href={`/${locale}/create-new-pass/pass-type`}
-          className="inline-flex items-center px-6 py-3 bg-[#008929] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
-        >
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-          Create New Pass
-        </a>
+      {/* Header with title and button */}
+      <div className="mb-20 mt-10 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            {dashboardT?.title || 'Dashboard'}
+          </h1>
+          <p className="text-lg text-gray-600">
+            {dashboardT?.description || 'Welcome to your Passly dashboard'}
+          </p>
+        </div>
+        
+        {/* Create New Pass Button */}
+        <div className="flex-shrink-0">
+          <a
+            href={`/${locale}/create-new-pass/pass-type`}
+            className="inline-flex items-center px-6 py-3 bg-[#008929] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Create New Pass
+          </a>
+        </div>
       </div>
 
       {/* Dashboard Content */}

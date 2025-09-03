@@ -74,10 +74,10 @@ export default function CreateNewPassGetStarted({ params }: { params: { locale: 
         <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left */}
           <div className="flex flex-col items-center md:items-start">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[54px] font-extrabold text-black leading-tight text-center md:text-left">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-semibold text-black leading-tight text-center md:text-left">
               {renderHeading(c.heading)}
             </h1>
-            <p className="mt-4 sm:mt-6 md:mt-[30px] font-semibold text-black text-base sm:text-lg max-w-2xl mb-4 sm:mb-6 md:mb-[25px] text-center md:text-left">{c.description}</p>
+            <p className="mt-4 sm:mt-6 md:mt-[30px] font-semibold text-black text-base sm:text-[17px] max-w-2xl mb-4 sm:mb-6 md:mb-[25px] text-center md:text-left">{c.description}</p>
             {/* Get Started Button */}
             <div className="text-center">
               <button

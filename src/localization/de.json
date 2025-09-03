@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboard": "Dashboard",
+    "campaigns": "Kampagnen",
     "createNewPass": "Neuen Pass erstellen",
     "settings": "Einstellungen",
     "getStarted": "Loslegen",

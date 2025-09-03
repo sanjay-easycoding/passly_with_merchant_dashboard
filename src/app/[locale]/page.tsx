@@ -1,4 +1,5 @@
 import GetStartedSection from '@/components/features/GetStartedSection';
+import GoDigitalSection from '@/components/features/GoDigitalSection';
 import HeroSection from '@/components/features/HeroSection';
 import JoinThousandsSection from '@/components/features/JoinThousandsSection';
 import Footer from '@/components/layout/Footer';
@@ -19,7 +20,7 @@ export default function LandingPage({ params }: LandingPageProps) {
         <HeroSection locale={locale} />
         <GetStartedSection locale={locale} />
         <JoinThousandsSection locale={locale} />
-       
+        <GoDigitalSection locale={locale} />
       </main>
       <Footer />
     </div>

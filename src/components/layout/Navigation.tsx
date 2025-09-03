@@ -36,6 +36,7 @@ const Navigation = ({ locale }: NavigationProps) => {
   const t = getTranslations(locale) as {
     navigation: {
       dashboard: string;
+      campaigns: string;
       createNewPass: string;
       settings: string;
       login: string;
@@ -77,6 +78,7 @@ const Navigation = ({ locale }: NavigationProps) => {
   const midNavItems = isLoggedIn
     ? [
         { label: (t.navigation?.dashboard as string) || 'Dashboard', href: 'dashboard' },
+        { label: (t.navigation?.campaigns as string) || 'Campaigns', href: 'campaigns' },
         { label: (t.navigation?.settings as string) || 'Settings', href: 'settings' },
         { label: (t.navigation?.createNewPass as string) || 'Create New Pass', href: 'create-new-pass/get-started' }
       ]
