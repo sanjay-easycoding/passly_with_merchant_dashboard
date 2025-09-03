@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { getTranslations, type Locale } from '@/lib/translations';
+import {type Locale } from '@/lib/translations';
 
 interface CampaignsProps {
   locale: Locale;
@@ -31,7 +31,6 @@ const mockCampaigns = [
 ];
 
 export default function Campaigns({ locale }: CampaignsProps) {
-  const t = getTranslations(locale);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -44,13 +43,11 @@ export default function Campaigns({ locale }: CampaignsProps) {
 
   const handleDownloadQR = (campaignId: number) => {
     // In a real app, this would generate and download a QR code
-    console.log(`Downloading QR code for campaign ${campaignId}`);
     alert(`Downloading QR code for campaign ${campaignId}`);
   };
 
-  const handleEditCampaign = (campaignId: number) => {
+  const handleEditCampaign = () => {
     // In a real app, this would navigate to the edit page
-    console.log(`Editing campaign ${campaignId}`);
     window.location.href = `/${locale}/create-new-pass/pass-type`;
   };
 
@@ -123,7 +120,7 @@ export default function Campaigns({ locale }: CampaignsProps) {
                   </td>
                   <td className="px-6 py-4">
                     <button
-                      onClick={() => handleEditCampaign(campaign.id)}
+                      onClick={handleEditCampaign}
                       className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 text-sm font-medium transition-colors"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
