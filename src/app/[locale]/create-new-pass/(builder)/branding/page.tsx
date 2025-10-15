@@ -53,7 +53,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
   }
 
   // Use conditional dispatch
-  const handleContinue = () => {
+  const _handleContinue = () => {
     if (localLogoUrl) {
       dispatch(setLogoUrl(localLogoUrl));
     }

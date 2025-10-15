@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -18,15 +17,15 @@ type PreviewCardProps = {
 
 // Premium Dark Loyalty Pass Design
 export default function PreviewCard({
-  headerColor,
+  headerColor: _headerColor,
   title,
-  type,
+  type: _type,
   rewardLine,
-  starsCount,
+  starsCount: _starsCount,
   stampsNeeded,
-  minPurchase,
+  minPurchase: _minPurchase,
   businessName,
-  contact,
+  contact: _contact,
 }: PreviewCardProps) {
   // previewCardData from RTK
   const previewCardData = useSelector((s: RootState) => s.builder);
@@ -35,7 +34,7 @@ export default function PreviewCard({
   const resolvedBusiness = businessName ?? (previewCardData.businessName || 'Company Name');
   const resolvedStampsNeeded = stampsNeeded ?? previewCardData.stampsNeeded ?? 5;
   const resolvedReward = rewardLine ?? (previewCardData.rewardDescription || 'Free Coffee');
-  const resolvedLogoUrl = previewCardData.logoUrl;
+  const _resolvedLogoUrl = previewCardData.logoUrl;
 
   return (
     <div className="w-full max-w-[400px] mx-auto perspective-1000">

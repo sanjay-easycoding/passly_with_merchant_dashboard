@@ -7,7 +7,7 @@ import type { Locale } from '@/lib/translations';
 
 // Type the children prop
 const CreateNewPassLayout: React.FC<React.PropsWithChildren<Record<string, never>>> = ({ children }) => {
-  const { locale } = useParams();
+  const { locale } = useParams() as { locale: Locale };
   const router = useRouter();
 
   useEffect(() => {

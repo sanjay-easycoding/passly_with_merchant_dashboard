@@ -23,7 +23,7 @@ export default function Steps() {
   const locale = (localeMatch?.[1] as 'en' | 'de') || 'en';
   
   // Get translations
-  const t = useTranslations(locale, 'builder');
+  const _t = useTranslations(locale, 'builder');
 
   return (
     <div className="w-full">
