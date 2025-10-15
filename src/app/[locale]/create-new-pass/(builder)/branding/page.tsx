@@ -68,7 +68,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
   return (
     <>
       {/* Left column: branding form */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
+      <div className="p-8 lg:p-10">
         <h2 className="text-2xl font-semibold mb-12 text-center">{t.branding.title}</h2>
 
         {/* Logo uploader */}
@@ -189,8 +189,7 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
       </div>
 
       {/* Right column: preview */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
-        <h2 className="text-2xl font-semibold mb-12 text-center">{t.branding.livePreview}</h2>
+      <div className="p-8 lg:p-10 flex flex-col items-center justify-center bg-gray-50">
         <PreviewCard headerColor={selectedColor} title={campaignName || 'Your Campaign'} logoUrl={logoUrl} />
       </div>
     </>

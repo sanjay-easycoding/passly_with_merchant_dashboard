@@ -26,7 +26,7 @@ export default function DistributionPage({ params }: { params: { locale: Locale 
   return (
     <>
       {/* Left panel per screenshot */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
+      <div className="p-8 lg:p-10">
         <h2 className="text-2xl font-semibold mb-4 text-center">{t.distribution.title}</h2>
         <p className="text-gray-700 mb-8 text-center">{t.distribution.subtitle}</p>
 
@@ -59,8 +59,7 @@ export default function DistributionPage({ params }: { params: { locale: Locale 
       </div>
 
       {/* Right preview (kept simple) */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
-        <h2 className="text-2xl font-semibold mb-12 text-center">{t.distribution.livePreview}</h2>
+      <div className="p-8 lg:p-10 flex flex-col items-center justify-center bg-gray-50">
         <PreviewCard title={campaignName || 'Your Campaign'} />
         <div className="mt-4 rounded-md bg-gray-100 p-3 break-all text-sm text-gray-700 max-w-[520px]">{link}</div>
       </div>

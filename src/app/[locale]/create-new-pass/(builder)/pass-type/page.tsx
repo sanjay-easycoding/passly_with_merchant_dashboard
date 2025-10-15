@@ -13,13 +13,13 @@ import type { Locale } from '@/lib/translations';
 type TileProps = {
   title: string;
   subtitle: string;
-  emoji: string;
+  icon: string;
   active?: boolean;
   onClick?: () => void;
 };
 
 export default function PassTypePage({ params }: { params: { locale: Locale } }) {
-  const [selected, setSelected] = React.useState<'loyalty' | 'discount' | 'tickets' | 'gift' | 'membership'>('loyalty');
+  const [selected, setSelected] = React.useState<'store' | 'coupon' | 'event' | 'boarding' | 'generic'>('store');
   const dispatch = useDispatch();
   
   // Get translations
@@ -33,22 +33,30 @@ export default function PassTypePage({ params }: { params: { locale: Locale } })
     dispatch(setType(selected));
   };
 
+  const passTypes = [
+    { key: 'store', icon: '🏪' },
+    { key: 'coupon', icon: '🎫' },
+    { key: 'event', icon: '🎟️' },
+    { key: 'boarding', icon: '✈️' },
+    { key: 'generic', icon: '💳' }
+  ];
 
-
-  function Tile({ title, subtitle, emoji, active, onClick }: TileProps) {
+  function Tile({ title, subtitle, icon, active, onClick }: TileProps) {
     return (
       <button
         type="button"
         onClick={onClick}
-        className={`w-full rounded-[16px] p-6 border transition ${
+        className={`w-full rounded-lg p-4 border transition-all duration-200 flex items-center gap-4 ${
           active
-            ? 'bg-[#DDEAB6] border-[#C9DB8F] shadow-[0_12px_24px_-8px_rgba(0,0,0,0.25)]'
-            : 'bg-[#b2b2b2] border-gray-200 shadow-[0_8px_16px_rgba(0,0,0,0.12)] cursor-not-allowed'
-        } hover:shadow-[0_14px_28px_-8px_rgba(0,0,0,0.28)] text-center flex flex-col items-center justify-center gap-3 min-h-[180px]`}
+            ? 'bg-blue-50 border-blue-200 shadow-md'
+            : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm'
+        }`}
       >
-        <div className="text-[42px] leading-none mb-1">{emoji}</div>
-        <div className="font-semibold text-[20px] text-gray-900">{title}</div>
-        <div className="text-[14px] text-gray-700 leading-relaxed max-w-[260px]">{subtitle}</div>
+        <div className="text-2xl">{icon}</div>
+        <div className="flex-1 text-left">
+          <div className="font-semibold text-lg text-gray-900 mb-1">{title}</div>
+          <div className="text-sm text-gray-600">{subtitle}</div>
+        </div>
       </button>
     );
   }
@@ -56,40 +64,40 @@ export default function PassTypePage({ params }: { params: { locale: Locale } })
   return (
     <>
       {/* Left column: selection + campaign name */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
-        <h2 className="text-2xl font-semibold mb-12 text-center">{t.passType.title}</h2>
+      <div className="p-8 lg:p-10">
+        <h2 className="text-3xl font-bold mb-8 text-gray-900">{(t.passType as any).title}</h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <Tile
-            title={t.passType.tiles.loyalty.title}
-            subtitle={t.passType.tiles.loyalty.subtitle}
-            emoji="⭐"
-            active={selected === 'loyalty'}
-            onClick={() => { setSelected('loyalty'); dispatch(setType('loyalty')); }}
-          />
-
-
+        <div className="space-y-3 mb-10">
+          {passTypes.map((passType) => (
+            <Tile
+              key={passType.key}
+              title={(t.passType as any).tiles[passType.key].title}
+              subtitle={(t.passType as any).tiles[passType.key].subtitle}
+              icon={passType.icon}
+              active={selected === passType.key}
+              onClick={() => { setSelected(passType.key as any); dispatch(setType(passType.key as any)); }}
+            />
+          ))}
         </div>
 
         {/* Campaign Name section */}
         <div className="mt-10">
-          <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.passType.campaignName.label}</label>
+          <label className="block text-[16px] font-semibold text-gray-900 mb-2">{(t.passType as any).campaignName.label}</label>
           <textarea
             className="w-full rounded-xl border border-gray-300 px-4 py-3 min-h-[110px] resize-y"
-            placeholder={t.passType.campaignName.placeholder}
+            placeholder={(t.passType as any).campaignName.placeholder}
             value={campaignName}
             onChange={(e) => {
               const v = e.target.value;
               dispatch(setCampaignNameAction(v));
             }}
           />
-          <p className="text-sm text-gray-500 mt-2">{t.passType.campaignName.helpText}</p>
+          <p className="text-sm text-gray-500 mt-2">{(t.passType as any).campaignName.helpText}</p>
         </div>
       </div>
 
       {/* Right column: preview */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
-        <h2 className="text-2xl font-semibold mb-12 text-center">{t.passType.livePreview}</h2>
+      <div className="p-8 lg:p-10 flex flex-col items-center justify-center bg-gray-50">
         <PreviewCard />
       </div>
     </>

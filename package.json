@@ -24,6 +24,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "framer-motion": "^12.23.12",
+    "geist": "^1.5.1",
     "next": "15.4.6",
     "next-i18next": "^15.4.2",
     "react": "19.1.0",
@@ -45,11 +46,11 @@
     "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-promise": "^7.2.1",
-    "tailwindcss": "^4",
-    "typescript": "^5",
-    "prettier": "^2.8.8",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3"
+    "lint-staged": "^13.2.3",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

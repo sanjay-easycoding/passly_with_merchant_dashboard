@@ -32,25 +32,25 @@
         "helpText": "Dies wird der Haupttitel Ihres Passes sein"
       },
       "tiles": {
-        "loyalty": {
-          "title": "Treuekarte",
-          "subtitle": "Belohnen Sie wiederkehrende Kunden mit Stempeln oder Punkten"
+        "store": {
+          "title": "Ladenkarte",
+          "subtitle": "Punkte, Belohnungen und Mitgliedschaft"
         },
-        "discount": {
-          "title": "Rabattkarte",
-          "subtitle": "Bieten Sie Rabatte und Aktionen an"
+        "coupon": {
+          "title": "Gutschein",
+          "subtitle": "Rabatte und Sonderangebote"
         },
-        "tickets": {
-          "title": "Event-Tickets",
-          "subtitle": "Digitale Tickets für Events und Shows"
+        "event": {
+          "title": "Event-Ticket",
+          "subtitle": "Konzerte, Sport und Konferenzen"
         },
-        "gift": {
-          "title": "Geschenkkarten",
-          "subtitle": "Digitale Geschenkkarten und Gutscheine"
+        "boarding": {
+          "title": "Bordkarte",
+          "subtitle": "Flüge, Züge und andere Transportmittel"
         },
-        "membership": {
-          "title": "Mitgliedschaft",
-          "subtitle": "Mitgliedskarten und exklusive Pässe"
+        "generic": {
+          "title": "Allgemeiner Pass",
+          "subtitle": "Ein vielseitiger Pass für jeden Zweck"
         }
       },
       "comingSoon": "Demnächst verfügbar"

@@ -1,3 +1,4 @@
+import { GeistSans, GeistMono } from 'geist/font';
 import Providers from '@/components/shared/Providers';
 
 import type { Metadata } from "next";
@@ -15,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <Providers>
           {children}
         </Providers>

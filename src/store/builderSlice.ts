@@ -13,7 +13,7 @@ export interface BuilderState extends Omit<PassBuilderState, 'createdAt' | 'upda
 export const initialState: BuilderState = {
   // Pass Type & Branding
   campaignName: '',
-  type: 'loyalty',
+  type: 'store',
   brandColor: '#7123a9',
   logoUrl: null,
   tagline: '',

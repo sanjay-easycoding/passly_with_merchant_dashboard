@@ -32,25 +32,25 @@
         "helpText": "This will be the main title of your pass"
       },
       "tiles": {
-        "loyalty": {
-          "title": "Loyalty Card",
-          "subtitle": "Rewards repeat customers with stamps or points"
+        "store": {
+          "title": "Store Card",
+          "subtitle": "Points, rewards, and membership"
         },
-        "discount": {
-          "title": "Discount Card",
-          "subtitle": "Offer Discount and Promotions"
+        "coupon": {
+          "title": "Coupon",
+          "subtitle": "Discounts and special offers"
         },
-        "tickets": {
-          "title": "Event Tickets",
-          "subtitle": "Digital tickets for Events and Shows"
+        "event": {
+          "title": "Event Ticket",
+          "subtitle": "Concerts, sports, and conferences"
         },
-        "gift": {
-          "title": "Gift Cards",
-          "subtitle": "Digital Gift Cards and Vouchers"
+        "boarding": {
+          "title": "Boarding Pass",
+          "subtitle": "Flights, trains, and other transport"
         },
-        "membership": {
-          "title": "Membership",
-          "subtitle": "Membership Cards and exclusive passes"
+        "generic": {
+          "title": "Generic Pass",
+          "subtitle": "A versatile pass for any purpose"
         }
       },
       "comingSoon": "Coming Soon"

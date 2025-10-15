@@ -19,7 +19,7 @@ export interface AuthState {
 }
 
 // Pass builder types
-export type PassType = 'loyalty' | 'discount' | 'tickets' | 'gift' | 'membership';
+export type PassType = 'store' | 'coupon' | 'event' | 'boarding' | 'generic';
 export type OffersFrequency = 'Daily' | 'Weekly' | 'Monthly' | 'Never';
 
 export interface PassBuilderState {

@@ -53,7 +53,7 @@ export default function ExperiencePage() {
   return (
     <>
       {/* Left panel */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
+      <div className="p-8 lg:p-10">
         <h2 className="text-2xl font-semibold mb-4 text-center">{t.experience.title}</h2>
         <p className="text-gray-700 mb-8 text-center">{t.experience.subtitle}</p>
 
@@ -103,8 +103,7 @@ export default function ExperiencePage() {
       </div>
 
       {/* Right preview */}
-      <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
-        <h2 className="text-2xl font-semibold mb-12 text-center">{t.experience.livePreview}</h2>
+      <div className="p-8 lg:p-10 flex flex-col items-center justify-center bg-gray-50">
         <PreviewCard title={builderData.campaignName || 'Your Campaign'} />
       </div>
     </>
