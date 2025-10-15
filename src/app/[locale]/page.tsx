@@ -3,6 +3,7 @@ import GoDigitalSection from '@/components/features/GoDigitalSection';
 import HeroSection from '@/components/features/HeroSection';
 import JoinThousandsSection from '@/components/features/JoinThousandsSection';
 import Footer from '@/components/layout/Footer';
+import FooterNew from '@/components/layout/FooterNew';
 import Navigation from '@/components/layout/Navigation';
 import { type Locale } from '@/lib/translations';
 
@@ -23,6 +24,7 @@ export default function LandingPage({ params }: LandingPageProps) {
         <GoDigitalSection locale={locale} />
       </main>
       <Footer />
+    
     </div>
   );
 }

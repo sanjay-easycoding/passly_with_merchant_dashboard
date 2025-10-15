@@ -3,7 +3,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import PreviewCard from '@/components/features/createPass/PreviewCard';
-import StepNav from '@/components/features/createPass/StepNav';
 import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
 
@@ -74,10 +73,6 @@ export default function PublishPage({ params }: { params: { locale: Locale } }) 
       <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
         <h2 className="text-2xl font-semibold mb-12 text-center">{t.publish.livePreview}</h2>
         <PreviewCard title={data.campaignName || 'Your Campaign'} />
-      </div>
-
-      <div className="lg:col-span-2">
-        <StepNav />
       </div>
     </>
   );

@@ -3,7 +3,6 @@ import React from 'react';
 
 
 import PreviewCard from '@/components/features/createPass/PreviewCard';
-import StepNav from '@/components/features/createPass/StepNav';
 import { useTranslations } from '@/lib/translations';
 
 import type { Locale } from '@/lib/translations';
@@ -64,9 +63,6 @@ export default function DistributionPage({ params }: { params: { locale: Locale 
         <h2 className="text-2xl font-semibold mb-12 text-center">{t.distribution.livePreview}</h2>
         <PreviewCard title={campaignName || 'Your Campaign'} />
         <div className="mt-4 rounded-md bg-gray-100 p-3 break-all text-sm text-gray-700 max-w-[520px]">{link}</div>
-      </div>
-      <div className="lg:col-span-2">
-        <StepNav />
       </div>
     </>
   );

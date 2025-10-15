@@ -3,8 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getTranslations, type Locale } from '@/lib/translations';
+import { getTranslations, type Locale, useTranslations } from '@/lib/translations';
+import { RootState } from '@/store';
+import { clearBuilderData } from '@/store/builderSlice';
 
 // Remove duplicate Create New Pass link
 const navItems = [
@@ -30,8 +33,11 @@ const Navigation = ({ locale }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const dispatch = useDispatch();
+  const builderData = useSelector((state: RootState) => state.builder);
   
   const t = getTranslations(locale) as {
     navigation: {
@@ -45,6 +51,25 @@ const Navigation = ({ locale }: NavigationProps) => {
     common: {
       title: string;
     };
+  };
+
+  // Get translations for the popup
+  const translations = useTranslations(locale, 'pages');
+  const getStartedTranslations = translations?.createNewPassGetStarted as {
+    popup?: {
+      title: string;
+      description: string;
+      continueExisting: string;
+      startFresh: string;
+      cancel: string;
+    };
+  };
+  const popupTranslations = getStartedTranslations?.popup || {
+    title: 'Continue with existing data?',
+    description: 'We found some previously saved data. Would you like to continue where you left off or start fresh?',
+    continueExisting: 'Continue with existing data',
+    startFresh: 'Start fresh',
+    cancel: 'Cancel'
   };
 
   useEffect(() => {
@@ -73,20 +98,6 @@ const Navigation = ({ locale }: NavigationProps) => {
   }, [locale]);
 
   const selectedLang = languages.find(lang => lang.code === selectedLanguage);
-
-  // Middle navigation items based on auth state
-  const midNavItems = isLoggedIn
-    ? [
-        { label: (t.navigation?.dashboard as string) || 'Dashboard', href: 'dashboard' },
-        { label: (t.navigation?.campaigns as string) || 'Campaigns', href: 'campaigns' },
-        { label: (t.navigation?.settings as string) || 'Settings', href: 'settings' },
-        { label: (t.navigation?.createNewPass as string) || 'Create New Pass', href: 'create-new-pass/get-started' }
-      ]
-    : [
-        { label: 'Start', href: '' },
-        { label: 'Product', href: '#product' },
-        { label: 'Pricing', href: '#pricing' }
-      ];
 
   // Function to get the correct navigation link
   const getNavLink = (href: string) => {
@@ -117,13 +128,58 @@ const Navigation = ({ locale }: NavigationProps) => {
     setIsMobileMenuOpen(false);
   };
 
+  // Check if there's existing builder data
+  const hasExistingData = builderData.campaignName || 
+                         builderData.brandColor || 
+                         builderData.logoUrl || 
+                         builderData.tagline || 
+                         builderData.stampsNeeded || 
+                         builderData.rewardDescription || 
+                         builderData.businessName || 
+                         builderData.contact;
+
   // Add authentication check for Create New Pass link
   const handleCreateNewPassClick = () => {
-    if (isLoggedIn) {
-      window.location.href = `/${locale}/create-new-pass/get-started`;
-    } else {
+    if (!isLoggedIn) {
       window.location.href = `/${locale}/login`;
+      return;
     }
+    
+    // If logged in, check for existing data
+    if (hasExistingData) {
+      setShowModal(true);
+    } else {
+      // No existing data, go directly to pass-type (step 1)
+      window.location.href = `/${locale}/create-new-pass/pass-type`;
+    }
+  };
+
+  // Middle navigation items based on auth state
+  const midNavItems = isLoggedIn
+    ? [
+        { label: (t.navigation?.dashboard as string) || 'Dashboard', href: 'dashboard', isLink: true },
+        { label: (t.navigation?.settings as string) || 'Settings', href: 'settings', isLink: true },
+        { label: (t.navigation?.createNewPass as string) || 'Create New Pass', href: '', isLink: false, onClick: handleCreateNewPassClick }
+      ]
+    : [
+        { label: 'Start', href: '', isLink: true },
+        { label: 'Product', href: '#product', isLink: true },
+        { label: 'Pricing', href: '#pricing', isLink: true }
+      ];
+
+  const handleContinueWithExisting = () => {
+    setShowModal(false);
+    window.location.href = `/${locale}/create-new-pass/pass-type`;
+  };
+
+  const handleStartFresh = () => {
+    setShowModal(false);
+    dispatch(clearBuilderData());
+    window.location.href = `/${locale}/create-new-pass/pass-type`;
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   // Don't render authentication-dependent content until client-side hydration is complete
@@ -290,13 +346,23 @@ const Navigation = ({ locale }: NavigationProps) => {
             <div className="hidden lg:flex items-center gap-8">
               {midNavItems.map((item) => (
                 <div key={item.label}>
-                  <Link
-                    href={item.href.startsWith('/') || item.href.startsWith('#') || item.href === '' ? item.href || `/${locale}/` : getNavLink(item.href)}
-                    className="text-gray-800 hover:text-blue-600 transition-colors relative group font-medium"
-                  >
-                    {item.label}
-                    <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-                  </Link>
+                  {item.isLink ? (
+                    <Link
+                      href={item.href.startsWith('/') || item.href.startsWith('#') || item.href === '' ? item.href || `/${locale}/` : getNavLink(item.href)}
+                      className="text-gray-800 hover:text-blue-600 transition-colors relative group font-medium"
+                    >
+                      {item.label}
+                      <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={item.onClick}
+                      className="text-gray-800 hover:text-blue-600 transition-colors relative group font-medium cursor-pointer"
+                    >
+                      {item.label}
+                      <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
@@ -459,28 +525,28 @@ const Navigation = ({ locale }: NavigationProps) => {
         <div className="px-2 pt-2 pb-3 space-y-1">
           {/* Mobile Navigation Links */}
           {midNavItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href.startsWith('/') || item.href.startsWith('#') || item.href === '' ? item.href || `/${locale}/` : getNavLink(item.href)}
-              onClick={handleMobileNavClick}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
-            >
-              {item.label}
-            </Link>
+            item.isLink ? (
+              <Link
+                key={item.label}
+                href={item.href.startsWith('/') || item.href.startsWith('#') || item.href === '' ? item.href || `/${locale}/` : getNavLink(item.href)}
+                onClick={handleMobileNavClick}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <button
+                key={item.label}
+                onClick={() => {
+                  item.onClick?.();
+                  handleMobileNavClick();
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+              >
+                {item.label}
+              </button>
+            )
           ))}
-          
-          {/* Extra mobile action for Create New Pass when logged in */}
-          {isLoggedIn && (
-          <button
-            onClick={() => {
-              handleCreateNewPassClick();
-              handleMobileNavClick();
-            }}
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
-          >
-            {t.navigation.createNewPass}
-          </button>
-          )}
           
           {/* Mobile Action Buttons */}
           <div className="pt-4 pb-3 border-t border-gray-200">
@@ -519,6 +585,41 @@ const Navigation = ({ locale }: NavigationProps) => {
           </div>
         </div>
       </div>
+
+      {/* Modal for Draft Selection */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100000] p-4">
+          <div className="bg-white rounded-xl p-6 sm:p-8 max-w-sm sm:max-w-md mx-4 w-full">
+            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center">
+              {popupTranslations.title}
+            </h3>
+            <p className="text-gray-600 mb-4 sm:mb-6 text-center text-sm sm:text-base">
+              {popupTranslations.description}
+            </p>
+            
+            <div className="flex flex-col gap-2 sm:gap-3">
+              <button
+                onClick={handleContinueWithExisting}
+                className="w-full py-2.5 sm:py-3 px-4 sm:px-6 bg-[#008929] text-white rounded-lg font-medium hover:bg-green-700 transition-colors text-sm sm:text-base"
+              >
+                {popupTranslations.continueExisting}
+              </button>
+              <button
+                onClick={handleStartFresh}
+                className="w-full py-2.5 sm:py-3 px-4 sm:px-6 bg-gray-200 text-gray-800 rounded-lg font-medium hover:bg-gray-300 transition-colors text-sm sm:text-base"
+              >
+                {popupTranslations.startFresh}
+              </button>
+              <button
+                onClick={handleCloseModal}
+                className="w-full py-2.5 sm:py-3 px-4 sm:px-6 border border-gray-300 text-gray-600 rounded-lg font-medium hover:bg-gray-50 transition-colors text-sm sm:text-base"
+              >
+                {popupTranslations.cancel}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

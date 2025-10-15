@@ -5,7 +5,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PreviewCard from '@/components/features/createPass/PreviewCard';
-import StepNav from '@/components/features/createPass/StepNav';
 import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
 import { setBrandColor, setLogoUrl, setTagline } from '@/store/builderSlice';
@@ -193,10 +192,6 @@ export default function BrandingPage({ params }: { params: { locale: Locale } })
       <div className="bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.34) 0px 4px 4px 0px, rgba(0, 0, 0, 0.31) 0px -4px 4px 0px' }}>
         <h2 className="text-2xl font-semibold mb-12 text-center">{t.branding.livePreview}</h2>
         <PreviewCard headerColor={selectedColor} title={campaignName || 'Your Campaign'} logoUrl={logoUrl} />
-      </div>
-
-      <div className="lg:col-span-2">
-        <StepNav onContinue={handleContinue} />
       </div>
     </>
   );
