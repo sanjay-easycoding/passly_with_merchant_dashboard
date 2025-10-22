@@ -8,6 +8,7 @@ export interface BuilderState extends Omit<PassBuilderState, 'createdAt' | 'upda
   createdAt: Date;
   updatedAt: Date;
   status: 'draft' | 'published' | 'archived';
+  layoutType: 'dark' | 'light' | 'gradient' | 'minimal' | 'vibrant' | 'elegant';
 }
 
 export const initialState: BuilderState = {
@@ -41,6 +42,7 @@ export const initialState: BuilderState = {
   createdAt: new Date(),
   updatedAt: new Date(),
   status: 'draft',
+  layoutType: 'dark',
 };
 
 const builderSlice = createSlice({
@@ -229,6 +231,11 @@ const builderSlice = createSlice({
       state.status = 'archived';
       state.updatedAt = new Date();
     },
+    
+    setLayoutType(state, action: PayloadAction<'dark' | 'light' | 'gradient' | 'minimal' | 'vibrant' | 'elegant'>) {
+      state.layoutType = action.payload;
+      state.updatedAt = new Date();
+    },
   },
 });
 
@@ -276,6 +283,7 @@ export const {
   clearBuilderData,
   publishPass,
   archivePass,
+  setLayoutType,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

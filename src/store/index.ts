@@ -7,8 +7,13 @@ import builderReducer from './builderSlice';
 // Add persistence logic
 function saveToLocalStorage(state: RootState) {
   try {
-    const serializedState = JSON.stringify(state.builder);
-    localStorage.setItem('builderState', serializedState);
+    // Only save to localStorage on the client side
+    if (typeof window !== 'undefined') {
+      console.log('Saving to localStorage:', state.builder);
+      const serializedState = JSON.stringify(state.builder);
+      localStorage.setItem('builderState', serializedState);
+      console.log('Saved to localStorage successfully');
+    }
   } catch (e) {
     console.warn('Could not save state', e);
   }
@@ -16,9 +21,19 @@ function saveToLocalStorage(state: RootState) {
 
 function loadFromLocalStorage() {
   try {
-    const serializedState = localStorage.getItem('builderState');
-    if (serializedState === null) return undefined;
-    return JSON.parse(serializedState);
+    // Only access localStorage on the client side
+    if (typeof window !== 'undefined') {
+      const serializedState = localStorage.getItem('builderState');
+      console.log('Loading from localStorage:', serializedState);
+      if (serializedState === null) {
+        console.log('No data in localStorage, using default state');
+        return undefined;
+      }
+      const parsed = JSON.parse(serializedState);
+      console.log('Parsed localStorage data:', parsed);
+      return parsed;
+    }
+    return undefined;
   } catch (e) {
     console.warn('Could not load state', e);
     return undefined;
@@ -26,6 +41,7 @@ function loadFromLocalStorage() {
 }
 
 const persistedState = loadFromLocalStorage();
+console.log('Initial persisted state:', persistedState);
 
 export const store = configureStore({
   reducer: {
@@ -36,7 +52,10 @@ export const store = configureStore({
   preloadedState: { builder: persistedState },
 });
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
+store.subscribe(() => {
+  console.log('Store state changed, saving to localStorage');
+  saveToLocalStorage(store.getState());
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

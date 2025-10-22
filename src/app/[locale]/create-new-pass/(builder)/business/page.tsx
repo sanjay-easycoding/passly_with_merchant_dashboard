@@ -1,80 +1,112 @@
 "use client";
-import React from 'react';
+import React, { use } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import PreviewCard from '@/components/features/createPass/PreviewCard';
 import { useTranslations } from '@/lib/translations';
 import { RootState } from '@/store';
-import { setBusinessName, setContact } from '@/store/builderSlice';
+import { setBusinessName, setContact, setBusinessAddress, setEmail, setWebsite, setSocialMedia } from '@/store/builderSlice';
 
 import type { Locale } from '@/lib/translations';
 
-export default function BusinessPage({ params }: { params: { locale: Locale } }) {
-  const [campaignName, setCampaignName] = React.useState<string>('');
-
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const data = JSON.parse(localStorage.getItem('passly_builder') || '{}');
-        if (data.campaignName) setCampaignName(data.campaignName);
-      } catch { /* Ignore localStorage errors */ }
-    }
-  }, []);
-
-  // Use Redux state
+export default function BusinessPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  // Unwrap params using use()
+  const resolvedParams = use(params);
+  
+  // Use Redux state for all fields
   const businessName = useSelector((state: RootState) => state.builder.businessName);
+  const businessAddress = useSelector((state: RootState) => state.builder.businessAddress);
   const contact = useSelector((state: RootState) => state.builder.contact);
+  const email = useSelector((state: RootState) => state.builder.email);
+  const website = useSelector((state: RootState) => state.builder.website);
+  const socialMedia = useSelector((state: RootState) => state.builder.socialMedia);
   const dispatch = useDispatch();
 
   // Get translations
-  const t = useTranslations(params.locale, 'builder');
+  const t = useTranslations(resolvedParams.locale, 'builder');
 
   return (
-    <>
-      {/* Left: business info form */}
-      <div className="p-8 lg:p-10">
-        <h2 className="text-2xl font-semibold mb-4 text-center">{t.business.title}</h2>
-        <p className="text-gray-700 mb-8 text-center">{t.business.subtitle}</p>
+    <div className="p-8 lg:p-12">
+      {/* Apple-style Header */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-semibold text-gray-900 mb-2 tracking-tight">{t.business.title}</h2>
+        <p className="text-base text-gray-600 font-medium">{t.business.subtitle}</p>
+      </div>
 
-        <div className="space-y-6">
-          <div>
-            <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.business.businessName.label}</label>
-            <input className="w-full rounded-xl border border-gray-300 px-4 py-3" placeholder={t.business.businessName.placeholder} value={businessName} onChange={(e) => dispatch(setBusinessName(e.target.value))} />
+      {/* Business Information Form */}
+      <div className="space-y-6">
+        {/* Business Name Section */}
+        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+          <label className="block text-lg font-semibold text-gray-900 mb-4">{t.business.businessName.label}</label>
+          <input 
+            className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all duration-200 placeholder-gray-400 shadow-sm" 
+            placeholder={t.business.businessName.placeholder} 
+            value={businessName} 
+            onChange={(e) => dispatch(setBusinessName(e.target.value))} 
+          />
+        </div>
+
+        {/* Business Address Section */}
+        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+          <label className="block text-lg font-semibold text-gray-900 mb-4">{t.business.businessAddress.label}</label>
+          <textarea 
+            className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 min-h-[100px] text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all duration-200 placeholder-gray-400 shadow-sm resize-none" 
+            placeholder={t.business.businessAddress.placeholder}
+            value={businessAddress}
+            onChange={(e) => dispatch(setBusinessAddress(e.target.value))}
+          />
+        </div>
+
+        {/* Contact Information Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Phone Number */}
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <label className="block text-lg font-semibold text-gray-900 mb-4">{t.business.phoneNumber.label}</label>
+            <input 
+              className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all duration-200 placeholder-gray-400 shadow-sm" 
+              placeholder={t.business.phoneNumber.placeholder} 
+              value={contact} 
+              onChange={(e) => dispatch(setContact(e.target.value))} 
+            />
           </div>
 
-          <div>
-            <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.business.businessAddress.label}</label>
-            <textarea className="w-full rounded-xl border border-gray-300 px-4 py-3 min-h-[110px]" placeholder={t.business.businessAddress.placeholder} />
+          {/* Email */}
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <label className="block text-lg font-semibold text-gray-900 mb-4">{t.business.email.label}</label>
+            <input 
+              className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all duration-200 placeholder-gray-400 shadow-sm" 
+              placeholder={t.business.email.placeholder}
+              value={email}
+              onChange={(e) => dispatch(setEmail(e.target.value))}
+            />
+          </div>
+        </div>
+
+        {/* Website and Social Media Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Website */}
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <label className="block text-lg font-semibold text-gray-900 mb-4">{t.business.website.label}</label>
+            <input 
+              className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all duration-200 placeholder-gray-400 shadow-sm" 
+              placeholder={t.business.website.placeholder}
+              value={website}
+              onChange={(e) => dispatch(setWebsite(e.target.value))}
+            />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.business.phoneNumber.label}</label>
-              <input className="w-full rounded-xl border border-gray-300 px-4 py-3" placeholder={t.business.phoneNumber.placeholder} value={contact} onChange={(e) => dispatch(setContact(e.target.value))} />
-            </div>
-            <div>
-              <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.business.email.label}</label>
-              <input className="w-full rounded-xl border border-gray-300 px-4 py-3" placeholder={t.business.email.placeholder} />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.business.website.label}</label>
-              <input className="w-full rounded-xl border border-gray-300 px-4 py-3" placeholder={t.business.website.placeholder} />
-            </div>
-            <div>
-              <label className="block text-[16px] font-semibold text-gray-900 mb-2">{t.business.socialMedia.label}</label>
-              <input className="w-full rounded-xl border border-gray-300 px-4 py-3" placeholder={t.business.socialMedia.placeholder} />
-            </div>
+          {/* Social Media */}
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <label className="block text-lg font-semibold text-gray-900 mb-4">{t.business.socialMedia.label}</label>
+            <input 
+              className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all duration-200 placeholder-gray-400 shadow-sm" 
+              placeholder={t.business.socialMedia.placeholder}
+              value={socialMedia}
+              onChange={(e) => dispatch(setSocialMedia(e.target.value))}
+            />
           </div>
         </div>
       </div>
-
-      {/* Right: preview */}
-      <div className="p-8 lg:p-10 flex flex-col items-center justify-center bg-gray-50">
-        <PreviewCard title={campaignName || 'Your Campaign'} businessName={businessName || 'Your Business Name'}  contact={contact || '+10-6789887612'} />
-      </div>
-    </>
+    </div>
   );
 }
